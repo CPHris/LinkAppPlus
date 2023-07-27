@@ -6,6 +6,7 @@ export type User = {
 };
 
 export type LinkPage = {
+  _id?: string,
   pageid: string,
   name: string,
   avatarImg?: string,
