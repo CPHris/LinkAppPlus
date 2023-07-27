@@ -8,8 +8,8 @@ const socialMediaLinkSchema = new mongoose.Schema({
 });
 
 const linkPageSchema = new mongoose.Schema({
-  pageid: { type: String, required: true, unique: true },
-  name: { type: String, required: true },
+  pageid: String,
+  name: String,
   avatarImg: String,
   description: String,
   backgroundImg: String,

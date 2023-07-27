@@ -7,10 +7,6 @@ export const UserController = {
     return user;
   },
   addUser: async (user: User) => {
-    const userExists = await db.getUser(user.username);
-    if (userExists) {
-      throw new Error("User already exists");
-    }
     await db.addUser(user);
   }
 };
