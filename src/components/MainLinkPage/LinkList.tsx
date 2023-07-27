@@ -9,7 +9,7 @@ export interface ILinkListProps {
 export default function LinkList (props: ILinkListProps) {
   return (
     <div>
-      {props.links.map(link => <LinkListItem link={link} />)}
+      {props.links.map(link => <LinkListItem link={link} key={link.title} />)}
     </div>
   );
 }

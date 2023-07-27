@@ -1,4 +1,5 @@
 import Avatar from '@/components/MainLinkPage/Avatar';
+import Banner from '@/components/MainLinkPage/Banner';
 import DescriptionBox from '@/components/MainLinkPage/DescriptionBox';
 import LinkList from '@/components/MainLinkPage/LinkList';
 import { LinkPage } from '@/types/User';
@@ -9,7 +10,6 @@ export interface IMainLinkPageProps {
 }
 
 const MainLinkPage: NextPage<{ linkpage: LinkPage; }> = ({ linkpage }) => {
-  console.log("🚀 ~ file: index.tsx:15 ~ linkpage:", linkpage);
   return (
     <>
       <div>
@@ -17,7 +17,7 @@ const MainLinkPage: NextPage<{ linkpage: LinkPage; }> = ({ linkpage }) => {
         <h1>{linkpage.name}</h1>
         <DescriptionBox description={linkpage.description} />
         {linkpage.links && <LinkList links={linkpage.links} />}
-
+        <Banner />
       </div>
     </>
   );
