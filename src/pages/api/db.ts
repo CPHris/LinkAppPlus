@@ -24,5 +24,11 @@ export const db = {
       { $push: { linkPages: linkpage } },
       { new: true });
     return updatedDocument;
+  },
+  getAllLinkPages: async (username: string) => {
+    const user = await db.getUser(username);
+    if (!user) throw new Error("User doesn't exist");
+    if (!user.linkPages) return [];
+    return user.linkPages;
   }
 };

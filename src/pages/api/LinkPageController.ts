@@ -3,6 +3,8 @@ import { LinkPage, User } from "@/types/User";
 
 export const LinkPageController = {
   getAllLinkPages: async (username: string) => {
+    const linkPages = await db.getAllLinkPages(username);
+    return linkPages;
   },
   getLinkPage: async (pageid: string) => {
 
