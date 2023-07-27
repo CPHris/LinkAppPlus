@@ -1,5 +1,6 @@
 import Avatar from '@/components/MainLinkPage/Avatar';
 import DescriptionBox from '@/components/MainLinkPage/DescriptionBox';
+import LinkList from '@/components/MainLinkPage/LinkList';
 import { LinkPage } from '@/types/User';
 import { GetServerSideProps, NextPage } from 'next';
 import * as React from 'react';
@@ -15,6 +16,8 @@ const MainLinkPage: NextPage<{ linkpage: LinkPage; }> = ({ linkpage }) => {
         <Avatar name={linkpage.name} img={linkpage.avatarImg} />
         <h1>{linkpage.name}</h1>
         <DescriptionBox description={linkpage.description} />
+        {linkpage.links && <LinkList links={linkpage.links} />}
+
       </div>
     </>
   );
