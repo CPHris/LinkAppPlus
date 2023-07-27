@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { LinkPageController } from './LinkPageController';
+import { LinkPageController } from './server/controllers/LinkPageController';
 import { LinkPage } from '@/types/User';
 
 type Data = {

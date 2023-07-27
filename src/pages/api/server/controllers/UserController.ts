@@ -1,5 +1,5 @@
 import { User } from "@/types/User";
-import { db } from "./db";
+import { db } from "../db";
 
 export const UserController = {
   getUser: async (username: string): Promise<User | null> => {

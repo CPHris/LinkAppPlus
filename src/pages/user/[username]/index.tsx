@@ -11,12 +11,10 @@ const UserPage: NextPage<{ user: User; }> = ({ user }) => {
   const userRoute = `/user/${user.username}`;
   return (
     <>
-      <div>
-        <h1>
-          My Link Pages
-        </h1>
-        <LinkPagesList linkpages={user.linkPages} userRoute={userRoute} />
-      </div>
+      <h1>
+        My Link Pages
+      </h1>
+      <LinkPagesList linkpages={user.linkPages} userRoute={userRoute} />
       <Link href={`${userRoute}/profile`}>Go to profile</Link>
     </>
   );

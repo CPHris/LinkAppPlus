@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { UserController } from './UserController';
+import { UserController } from './server/UserController';
 import { User } from '@/types/User';
 
 type Data = {

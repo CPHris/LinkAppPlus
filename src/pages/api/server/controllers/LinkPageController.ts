@@ -1,4 +1,4 @@
-import { db } from "./db";
+import { db } from "../db";
 import { LinkPage, User } from "@/types/User";
 
 export const LinkPageController = {
