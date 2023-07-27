@@ -30,5 +30,16 @@ export const db = {
     if (!user) throw new Error("User doesn't exist");
     if (!user.linkPages) return [];
     return user.linkPages;
+  },
+  getLinkPage: async (pageid: string) => {
+    try {
+      const user = await UserSchema.findOne({ 'linkPages.pageid': pageid });
+      if (!user) throw new Error('User page not found');
+      const linkPage: LinkPage = user.linkPages.find((page: LinkPage) => page.pageid === pageid);
+      if (!linkPage) throw new Error('Link page not found');
+      return linkPage;
+    } catch (err) {
+      throw err;
+    }
   }
 };

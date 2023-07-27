@@ -7,7 +7,8 @@ export const LinkPageController = {
     return linkPages;
   },
   getLinkPage: async (pageid: string) => {
-
+    const linkPage = db.getLinkPage(pageid);
+    return linkPage;
   },
   addLinkPage: async (username: string, linkpage: LinkPage) => {
     const updatedDocument: User = await db.addLinkPage(username, linkpage);
