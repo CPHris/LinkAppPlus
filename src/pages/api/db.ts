@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { User } from "@/types/User";
-import { UserSchema } from "./UserSchema";
+import UserSchema from "./UserSchema";
 
 const uri = "mongodb://127.0.0.1:27017/LinkApp";
 const client = mongoose.connect(uri);
