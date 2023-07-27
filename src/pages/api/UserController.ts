@@ -8,5 +8,8 @@ export const UserController = {
   },
   addUser: async (user: User) => {
     await db.addUser(user);
+  },
+  deleteUser: async (username: string) => {
+    return await db.deleteUser(username);
   }
 };

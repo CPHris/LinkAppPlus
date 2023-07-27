@@ -13,5 +13,9 @@ export const db = {
   addUser: async (user: User) => {
     const newUser = new UserSchema(user);
     await newUser.save();
+  },
+  deleteUser: async (username: string) => {
+    const { deletedCount } = await UserSchema.deleteOne({ username });
+    return deletedCount;
   }
 };
