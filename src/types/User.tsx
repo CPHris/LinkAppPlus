@@ -2,7 +2,7 @@ export type User = {
   _id?: string,
   username: string,
   email: string,
-  linkPages?: LinkPage[];
+  linkPages: LinkPage[] | [];
 };
 
 export type LinkPage = {
@@ -12,7 +12,7 @@ export type LinkPage = {
   avatarImg?: string,
   description: string,
   backgroundImg?: string;
-  links?: SocialMediaLink[];
+  links: SocialMediaLink[] | [];
 };
 
 export type SocialMediaLink = {

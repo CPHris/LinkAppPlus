@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { UserController } from './server/UserController';
+import { UserController } from './server//controllers/UserController';
 
 type Data = {
   message: string;
@@ -15,6 +15,7 @@ export default async function handler (
       return res.status(400).send({ message: "Missing email/username" });
     }
     try {
+      user.linkPages = [];
       await UserController.addUser(user);
       res.status(201).json({ message: 'User created' });
     } catch (err) {
