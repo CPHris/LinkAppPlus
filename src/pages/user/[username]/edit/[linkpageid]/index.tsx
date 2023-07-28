@@ -14,8 +14,8 @@ export default function EditLinkPage () {
   const linkPage = getLinkPage('page1', user.linkPages);
   return (
     <Layout username={user.username} email={user.email}>
-      <div>
-        <form>
+      <main className='flex justify-center items-center'>
+        <form className='container mx-md'>
           <EditAvatar img={linkPage.avatarImg} letters={user.username[0]} />
           <div>
             <input type='text' value={linkPage.name} />
@@ -31,7 +31,7 @@ export default function EditLinkPage () {
             <button>Save Changes</button>
           </div>
         </form>
-      </div>
+      </main>
     </Layout>
   );
 };
