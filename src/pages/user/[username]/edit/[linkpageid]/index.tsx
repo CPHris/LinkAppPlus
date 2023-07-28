@@ -14,8 +14,8 @@ export default function EditLinkPage () {
   const linkPage = getLinkPage('page1', user.linkPages);
   return (
     <Layout username={user.username} email={user.email}>
-      <main className='flex justify-center items-center px-5'>
-        <form className='container mx-md'>
+      <main className='px-5 '>
+        <form className='container max-w-3xl mx-auto my-0'>
           <EditAvatar img={linkPage.avatarImg} letters={user.username[0]} />
           <div className='w-full p-8 mb-5 bg-white rounded-lg'>
             <h2 className='block text-center mb-2 font-semibold'>Name</h2>
