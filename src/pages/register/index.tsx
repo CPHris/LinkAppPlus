@@ -12,7 +12,7 @@ export default function RegisterPage (props: IRegisterPageProps) {
       </div>
       <Link href='/login'>I already have an account</Link>
       <br></br>
-      <Link href='/user/akjsdfhj'>Create user and log in</Link>
+      <Link href='/user/patata'>Create user and log in</Link>
     </>
   );
 }

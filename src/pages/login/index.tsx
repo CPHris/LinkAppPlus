@@ -12,7 +12,7 @@ export default function LoginPage (props: ILoginPageProps) {
       </div>
       <Link href='/register'>I don't have an account</Link>
       <br></br>
-      <Link href='/user/asljdfh'>Take me to my user page</Link>
+      <Link href='/user/patata'>Take me to my user page</Link>
     </>
   );
 }
