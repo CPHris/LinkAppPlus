@@ -17,13 +17,13 @@ const initialState: User = {
           img: "https://w7.pngwing.com/pngs/968/223/png-transparent-logo-twitch-logos-brands-icon-thumbnail.png",
           title: "Title of my first link",
           subtitle: " Subtitle of my first link",
-          link: "http://twitch.tv",
+          url: "http://twitch.tv",
         },
         {
           img: "https://w7.pngwing.com/pngs/968/223/png-transparent-logo-twitch-logos-brands-icon-thumbnail.png",
           title: "Title of my second link",
           subtitle: "Subtitle of my second link",
-          link: "http://twitch.tv"
+          url: "http://twitch.tv"
         }
       ],
       _id: "64c2ac24b7cee64086ad0c72"

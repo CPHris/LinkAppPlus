@@ -19,5 +19,5 @@ export type SocialMediaLink = {
   img: string,
   title: string,
   subtitle: string,
-  link: string;
+  url: string;
 };

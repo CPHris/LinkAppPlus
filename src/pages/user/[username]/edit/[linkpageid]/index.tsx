@@ -1,4 +1,5 @@
 import EditAvatar from '@/components/EditLinkPage/EditAvatar';
+import EditLink from '@/components/EditLinkPage/EditLink';
 import Layout from '@/components/Layout';
 import { RootState } from '@/store';
 import { LinkPage } from '@/types/User';
@@ -22,6 +23,9 @@ export default function EditLinkPage () {
           <div>
             <textarea value={linkPage.description}></textarea>
           </div>
+          {
+            linkPage.links.map(link => <EditLink link={link} />)
+          }
         </form>
       </div>
     </Layout>

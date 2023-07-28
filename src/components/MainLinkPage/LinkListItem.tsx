@@ -7,7 +7,7 @@ export interface ILinkListItemProps {
 }
 
 export default function LinkListItem (props: ILinkListItemProps) {
-  const { title, subtitle, img, link } = props.link;
+  const { title, subtitle, img, url: link } = props.link;
   return (
     <Link href={link}>
       <div>
