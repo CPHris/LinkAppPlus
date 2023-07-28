@@ -20,4 +20,5 @@ export type SocialMediaLink = {
   title: string,
   subtitle: string,
   url: string;
+  _id?: string;
 };

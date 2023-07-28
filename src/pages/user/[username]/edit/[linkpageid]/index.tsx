@@ -2,7 +2,7 @@ import EditAvatar from '@/components/EditLinkPage/EditAvatar';
 import EditLink from '@/components/EditLinkPage/EditLink';
 import Layout from '@/components/Layout';
 import { RootState } from '@/store';
-import { LinkPage } from '@/types/User';
+import { LinkPage, SocialMediaLink } from '@/types/User';
 import Link from 'next/link';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
@@ -18,6 +18,12 @@ export default function EditLinkPage () {
   const [avatarImg, setAvatarImg] = useState<string | undefined>(linkPage.avatarImg);
   const [name, setName] = useState(linkPage.name);
   const [description, setDescription] = useState(linkPage.description);
+  const [links, setLinks] = useState(linkPage.links);
+
+  const wrapLinks = (link: SocialMediaLink) => {
+    // TODO
+    //setLinks()
+  };
 
   const onNameChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
@@ -46,7 +52,7 @@ export default function EditLinkPage () {
             <textarea onChange={onDescriptionChangeHandler} className='block mx-auto my-0 py-3 px-5 bg-gray-200 w-96 h-32 text-left rounded-md' value={description}></textarea>
           </div>
           {
-            linkPage.links.map(link => <EditLink link={link} />)
+            linkPage.links.map((link, index) => <EditLink link={link} key={link.title} index={index} onChange={wrapLinks} />)
           }
           <div className='flex justify-end'>
             <Link href={`/user/${user.username}`} className='text-white bg-red-400 rounded-md p-3 mr-3 font-semibold'>Cancel</Link>
