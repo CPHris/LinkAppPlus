@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState: User = {
   username: "",
-  email: ""
+  email: "",
+  linkPages: []
 };
 
 const userSlice = createSlice({
@@ -11,8 +12,11 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     login: (state, action) => {
+      console.log("🚀 ~ file: user-slice.ts:15 ~ action:", action.payload);
       //store user data in the store
-      state = action.payload.user;
+      state.username = action.payload.username;
+      state.email = action.payload.email;
+      state.linkPages = [...action.payload.linkPages];
     },
     addNewLinkPage: (state, action) => {
       //create a new link page

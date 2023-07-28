@@ -12,7 +12,7 @@ const UserPage: NextPage<{ user: User; }> = ({ user }) => {
   const dispatch = useDispatch();
   const userRoute = `/user/${user.username}`;
   useEffect(() => {
-    dispatch(userActions.login);
+    dispatch(userActions.login(user));
   }, []);
 
   return (
