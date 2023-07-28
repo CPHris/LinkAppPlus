@@ -16,6 +16,12 @@ export default function EditLinkPage () {
       <div>
         <form>
           <EditAvatar img={linkPage.avatarImg} letters={user.username[0]} />
+          <div>
+            <input type='text' value={linkPage.name} />
+          </div>
+          <div>
+            <textarea value={linkPage.description}></textarea>
+          </div>
         </form>
       </div>
     </Layout>
