@@ -3,27 +3,33 @@ import { User } from '@/types/User';
 import { GetServerSideProps, NextPage } from 'next';
 import Link from 'next/link';
 import * as React from 'react';
-
-export interface IUserPageProps {
-}
+import { useDispatch } from 'react-redux';
+import Layout from '@/components/Layout';
+import { useEffect } from 'react';
+import { userActions } from '@/store/user-slice';
 
 const UserPage: NextPage<{ user: User; }> = ({ user }) => {
+  const dispatch = useDispatch();
   const userRoute = `/user/${user.username}`;
+  useEffect(() => {
+    dispatch(userActions.login);
+  }, []);
+
   return (
     <>
-      <h1>
-        My Link Pages
-      </h1>
-      <LinkPagesList linkpages={user.linkPages} userRoute={userRoute} />
-      <Link href={`${userRoute}/profile`}>Go to profile</Link>
+      <Layout username={user.username} email={user.email}>
+        <h1>
+          My Link Pages
+        </h1>
+        <LinkPagesList linkpages={user.linkPages} userRoute={userRoute} />
+        <Link href={`${userRoute}/profile`}>Go to profile</Link>
+      </Layout>
     </>
   );
 };
-
 export default UserPage;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  //fetch data from API
   let user = {};
   if (context.params) {
     const { username } = context.params;
