@@ -26,6 +26,10 @@ export default function EditLinkPage () {
           {
             linkPage.links.map(link => <EditLink link={link} />)
           }
+          <div>
+            <button>Cancel</button>
+            <button>Save Changes</button>
+          </div>
         </form>
       </div>
     </Layout>
