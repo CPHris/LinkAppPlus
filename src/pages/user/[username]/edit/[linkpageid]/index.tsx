@@ -64,6 +64,7 @@ export default function EditLinkPage () {
       pageid: linkPage.pageid,
       avatarImg, name, description, links
     };
+    console.log("🚀 ~ file: index.tsx:67 ~ submitForm ~ newLinkPage: LinkPage.links:", links);
     // dispatch(userActions.replaceLinkPage(newLinkPage));
     const response = await fetch('http://localhost:3000/api/linkpage', {
       headers: {

@@ -20,7 +20,6 @@ export default function EditLink (props: IEditLinkProps) {
     setEditingMode(prevState => !prevState);
   };
 
-  // TODO every time there is a change, call the onChange an pass the new
   const wrapLink = () => {
     const editedLink: SocialMediaLink = {
       img,
