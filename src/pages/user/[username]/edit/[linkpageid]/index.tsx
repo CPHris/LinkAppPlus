@@ -5,6 +5,7 @@ import { RootState } from '@/store';
 import { userActions } from '@/store/user-slice';
 import { LinkPage, SocialMediaLink } from '@/types/User';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -14,7 +15,9 @@ export interface IEditLinkPageProps {
 
 export default function EditLinkPage () {
   const user = useSelector((state: RootState) => state.user);
-  const linkPage = getLinkPage('page1', user.linkPages);
+  const router = useRouter();
+  const { linkpageid } = router.query;
+  const linkPage = getLinkPage(linkpageid as string, user.linkPages);
   const dispatch = useDispatch();
 
   const [avatarImg, setAvatarImg] = useState<string | undefined>(linkPage.avatarImg);

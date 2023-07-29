@@ -46,9 +46,11 @@ const userSlice = createSlice({
       state.email = action.payload.email;
       state.linkPages = [...action.payload.linkPages];
     },
-    //   addNewLinkPage: (state, action) => {
-    //     //create a new link page
-    //   },
+    addNewLinkPage: (state, action) => {
+      const newState = [...state.linkPages];
+      newState.push(action.payload);
+      state.linkPages = [...newState];
+    },
     //   replaceLinkPage: (state, action) => {
     //     const newPage = action.payload;
     //     let existingPage = state.linkPages.find(page => page.pageid === newPage.pageid);

@@ -34,6 +34,7 @@ const UserPage: NextPage<{ user: User; }> = ({ user }) => {
         linkpage: newPage
       })
     }).then(response => {
+      dispatch(userActions.addNewLinkPage(newPage));
       router.push(`${userRoute}/edit/newPage`);
     }).catch(error => {
       console.error(error);
