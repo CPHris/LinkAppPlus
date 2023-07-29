@@ -20,9 +20,16 @@ export default function EditLinkPage () {
   const [description, setDescription] = useState(linkPage.description);
   const [links, setLinks] = useState(linkPage.links);
 
-  const wrapLinks = (link: SocialMediaLink) => {
-    // TODO
-    //setLinks()
+  const wrapLinks = (link: SocialMediaLink, index: number) => {
+    setLinks(prevLinks => {
+      const newState = [...prevLinks];
+      newState[index] = link;
+      return newState;
+    });
+  };
+
+  const onAvatarChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setAvatarImg(e.target.value);
   };
 
   const onNameChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,13 +43,23 @@ export default function EditLinkPage () {
   const submitForm = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Change state and sumbit changes to backend");
+    console.log("🚀 ~ file: index.tsx:19 ~ EditLinkPage ~ avatarImg:", avatarImg);
+    console.log("🚀 ~ file: index.tsx:21 ~ EditLinkPage ~ name:", name);
+    console.log("🚀 ~ file: index.tsx:23 ~ EditLinkPage ~ description:", description);
+    console.log("🚀 ~ file: index.tsx:25 ~ EditLinkPage ~ links:", links);
   };
 
   return (
     <Layout username={user.username} email={user.email}>
       <main className='px-5'>
         <form className='container max-w-3xl mx-auto my-0' onSubmit={submitForm}>
-          <EditAvatar img={linkPage.avatarImg} letters={user.username[0]} onChange={setAvatarImg} />
+          <div className='w-full p-8 mb-5 bg-white rounded-lg'>
+            <h2 className='block text-center mb-2 font-semibold'>Avatar</h2>
+            {avatarImg || avatarImg !== '' ? <img src={linkPage.avatarImg} className='mt-0 mb-5 mx-auto w-36 rounded-full' /> :
+              <div>{user.username[0].toUpperCase()}</div>
+            }
+            <input onChange={onAvatarChangeHandler} type='text' value={avatarImg} name='avatarImg' className='block mx-auto my-0 px-3 bg-gray-200 rounded-md' />
+          </div>
           <div className='w-full p-8 mb-5 bg-white rounded-lg'>
             <h2 className='block text-center mb-2 font-semibold'>Name</h2>
             <input className='block mx-auto my-0 px-3 bg-gray-200 text-center rounded-md' type='text' value={name} onChange={onNameChangeHandler} />
