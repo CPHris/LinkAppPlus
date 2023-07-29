@@ -25,6 +25,12 @@ export default async function handler (
   }
   if (req.method === 'POST') {
     const { username, linkpage } = req.body;
+    console.log("🚀 ~ file: linkpage.ts:28 ~ linkpage:", linkpage);
+    console.log("🚀 ~ file: linkpage.ts:28 ~ linkpage:", linkpage.pageid);
+    console.log("🚀 ~ file: linkpage.ts:28 ~ linkpage:", linkpage.name);
+    console.log("🚀 ~ file: linkpage.ts:28 ~ username:", username);
+
+    console.log("🚀 ~ file: linkpage.ts:28 ~ req.body:", req.body);
 
     if (!username || !linkpage || !linkpage.pageid || !linkpage.name) {
       return res.status(400).send({ payload: "Missing fields" });
