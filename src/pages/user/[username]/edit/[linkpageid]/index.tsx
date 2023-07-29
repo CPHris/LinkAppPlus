@@ -22,12 +22,22 @@ export default function EditLinkPage () {
   const [description, setDescription] = useState(linkPage.description);
   const [links, setLinks] = useState(linkPage.links);
 
-  useEffect(() => { }, [avatarImg]);
+
+  useEffect(() => {
+  }, [links]);
 
   const wrapLinks = (link: SocialMediaLink, index: number) => {
     setLinks(prevLinks => {
       const newState = [...prevLinks];
       newState[index] = link;
+      return newState;
+    });
+  };
+
+  const onLinkDelete = (index: number) => {
+    setLinks(prevLinks => {
+      let newState = [...prevLinks];
+      newState.splice(index, 1);
       return newState;
     });
   };
@@ -83,13 +93,6 @@ export default function EditLinkPage () {
     <Layout username={user.username} email={user.email}>
       <main className='px-5'>
         <form className='container max-w-3xl mx-auto my-0' onSubmit={submitForm}>
-          {/* <div className='w-full p-8 mb-5 bg-white rounded-lg'>
-            <h2 className='block text-center mb-3 font-semibold'>Avatar</h2>
-            {avatarImg && avatarImg !== '' ? <img src={linkPage.avatarImg} className='mt-0 mb-5 mx-auto w-36 rounded-full' /> :
-              <div className='px-10 py-8 w-fit rounded-full bg-cyan-500 text-white font-bold text-3xl mx-auto mb-5'>{user.username[0].toUpperCase()}</div>
-            }
-            <input onChange={onAvatarChangeHandler} type='text' value={avatarImg} name='avatarImg' className='block mx-auto my-0 px-3 bg-gray-200 rounded-md' />
-          </div> */}
           <EditAvatar letters={user.username[0]} onChange={onAvatarChangeHandler} img={linkPage.avatarImg} />
           <div className='w-full p-8 mb-5 bg-white rounded-lg'>
             <h2 className='block text-center mb-2 font-semibold'>Name</h2>
@@ -102,7 +105,7 @@ export default function EditLinkPage () {
           <div className='flex'>
             <div className='w-1/2 mr-10'>
               {
-                links.map((link, index) => <EditLink link={link} key={link.title} index={index} onChange={wrapLinks} />)
+                links.map((link, index) => <EditLink link={link} key={link.title} index={index} onChange={wrapLinks} onDelete={onLinkDelete} />)
               }
               <button type='button' className='bg-green-400 rounded w-full' onClick={addNewLink}><i className="fa-solid fa-plus text-white"></i></button>
             </div>

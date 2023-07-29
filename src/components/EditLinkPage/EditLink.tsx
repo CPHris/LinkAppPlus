@@ -6,6 +6,7 @@ export interface IEditLinkProps {
   link: SocialMediaLink,
   index: number,
   onChange: (link: SocialMediaLink, index: number) => void;
+  onDelete: (index: number) => void;
 }
 
 export default function EditLink (props: IEditLinkProps) {
@@ -55,7 +56,7 @@ export default function EditLink (props: IEditLinkProps) {
             ? <button type='button' className='px-1 bg-green-400 rounded mb-7'><i className="fa-regular fa-circle-check fa-xs text-white" onClick={wrapLink}></i></button>
             : <button type='button' className='px-1 border-solid border border-cyan-500 rounded mb-7'><i className="fa-solid fa-edit fa-xs text-cyan-500" onClick={toggleEditingMode}></i></button>
           }
-          <button type='button' className='px-1 bg-red-400 rounded'><i className="fa-solid fa-trash fa-xs text-white"></i></button>
+          <button type='button' className='px-1 bg-red-400 rounded' onClick={() => { props.onDelete(props.index); }}><i className="fa-solid fa-trash fa-xs text-white"></i></button>
         </div>
         <img src={link.img} className='w-20 rounded-md flex mr-5' />
         {isEditingModeEnabled
