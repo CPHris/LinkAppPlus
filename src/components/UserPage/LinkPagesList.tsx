@@ -10,7 +10,7 @@ export interface ILinkPagesListProps {
 export default function LinkPagesList (props: ILinkPagesListProps) {
   const { linkpages, userRoute } = props;
   return (
-    <div>
+    <div className='border-t mb-3'>
       {linkpages && linkpages.map(linkpage => <LinkPagesListItem linkpage={linkpage} userRoute={userRoute} />)}
     </div>
   );

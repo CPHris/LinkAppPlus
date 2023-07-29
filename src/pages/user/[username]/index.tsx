@@ -18,11 +18,14 @@ const UserPage: NextPage<{ user: User; }> = ({ user }) => {
   return (
     <>
       <Layout username={user.username} email={user.email}>
-        <h1>
-          My Link Pages
-        </h1>
-        <LinkPagesList linkpages={user.linkPages} userRoute={userRoute} />
-        <Link href={`${userRoute}/profile`}>Go to profile</Link>
+        <div className='max-w-4xl mx-auto'>
+          <h1 className='font-bold text-xl text-center mb-5'>
+            My Link Pages
+          </h1>
+          <LinkPagesList linkpages={user.linkPages} userRoute={userRoute} />
+          <button className="mx-auto block w-fit py-1 px-3 text-gray-700 font-semibold rounded-lg hover:bg-gray-200" type='button'>Add New Page</button>
+          {/* <Link href={`${userRoute}/profile`}>Go to profile</Link> */}
+        </div>
       </Layout>
     </>
   );
