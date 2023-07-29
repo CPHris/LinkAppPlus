@@ -2,11 +2,12 @@ import EditAvatar from '@/components/EditLinkPage/EditAvatar';
 import EditLink from '@/components/EditLinkPage/EditLink';
 import Layout from '@/components/Layout';
 import { RootState } from '@/store';
+import { userActions } from '@/store/user-slice';
 import { LinkPage, SocialMediaLink } from '@/types/User';
 import Link from 'next/link';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 export interface IEditLinkPageProps {
 }
@@ -14,6 +15,7 @@ export interface IEditLinkPageProps {
 export default function EditLinkPage () {
   const user = useSelector((state: RootState) => state.user);
   const linkPage = getLinkPage('page1', user.linkPages);
+  const dispatch = useDispatch();
 
   const [avatarImg, setAvatarImg] = useState<string | undefined>(linkPage.avatarImg);
   const [name, setName] = useState(linkPage.name);
@@ -55,13 +57,23 @@ export default function EditLinkPage () {
     });
   };
 
-  const submitForm = (e: React.FormEvent) => {
+  const submitForm = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Change state and sumbit changes to backend");
-    console.log("🚀 ~ file: index.tsx:19 ~ EditLinkPage ~ avatarImg:", avatarImg);
-    console.log("🚀 ~ file: index.tsx:21 ~ EditLinkPage ~ name:", name);
-    console.log("🚀 ~ file: index.tsx:23 ~ EditLinkPage ~ description:", description);
-    console.log("🚀 ~ file: index.tsx:25 ~ EditLinkPage ~ links:", links);
+    const newLinkPage: LinkPage = {
+      _id: linkPage._id,
+      pageid: linkPage.pageid,
+      avatarImg, name, description, links
+    };
+    // dispatch(userActions.replaceLinkPage(newLinkPage));
+    const response = await fetch('http://localhost:3000/api/linkpage', {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'PUT',
+      body: JSON.stringify({ username: user.username, linkpage: newLinkPage })
+    });
+    const data = await response.json();
+    console.log(data);
   };
 
   return (
@@ -69,9 +81,9 @@ export default function EditLinkPage () {
       <main className='px-5'>
         <form className='container max-w-3xl mx-auto my-0' onSubmit={submitForm}>
           <div className='w-full p-8 mb-5 bg-white rounded-lg'>
-            <h2 className='block text-center mb-2 font-semibold'>Avatar</h2>
-            {avatarImg || avatarImg !== '' ? <img src={linkPage.avatarImg} className='mt-0 mb-5 mx-auto w-36 rounded-full' /> :
-              <div>{user.username[0].toUpperCase()}</div>
+            <h2 className='block text-center mb-3 font-semibold'>Avatar</h2>
+            {avatarImg && avatarImg !== '' ? <img src={linkPage.avatarImg} className='mt-0 mb-5 mx-auto w-36 rounded-full' /> :
+              <div className='px-10 py-8 w-fit rounded-full bg-cyan-500 text-white font-bold text-3xl mx-auto mb-5'>{user.username[0].toUpperCase()}</div>
             }
             <input onChange={onAvatarChangeHandler} type='text' value={avatarImg} name='avatarImg' className='block mx-auto my-0 px-3 bg-gray-200 rounded-md' />
           </div>

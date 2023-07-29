@@ -46,15 +46,25 @@ const userSlice = createSlice({
       state.email = action.payload.email;
       state.linkPages = [...action.payload.linkPages];
     },
-    addNewLinkPage: (state, action) => {
-      //create a new link page
-    },
-    replaceLinkPage: (state, action) => {
-      // modify a certain link page
-    },
-    deleteLinkPage: (state, action) => {
-      // delete link page
-    }
+    //   addNewLinkPage: (state, action) => {
+    //     //create a new link page
+    //   },
+    //   replaceLinkPage: (state, action) => {
+    //     const newPage = action.payload;
+    //     let existingPage = state.linkPages.find(page => page.pageid === newPage.pageid);
+    //     console.log("🚀 ~ file: user-slice.ts:55 ~ state.linkPages:", state.linkPages);
+    //     console.log("🚀 ~ file: user-slice.ts:58 ~ existingItem:", existingPage);
+    //     if (existingPage && newPage) {
+    //       existingPage.name = newPage.name;
+    //       existingPage.pageid = newPage.pageid;
+    //       existingPage.description = newPage.description;
+    //       existingPage.avatarImg = newPage.avatarImg;
+    //       existingPage.links = [...newPage.links];
+    //     }
+    //   },
+    //   deleteLinkPage: (state, action) => {
+    //     // delete link page
+    //   }
   }
 });
 

@@ -37,4 +37,19 @@ export default async function handler (
       return res.status(400).send({ payload: (err as Error).message });
     }
   }
+
+  if (req.method === 'PUT') {
+    const { username, linkpage } = req.body;
+
+    if (!username || !linkpage || !linkpage.pageid || !linkpage.name) {
+      return res.status(400).send({ payload: "Missing fields" });
+    }
+    try {
+      await LinkPageController.replaceLinkPage(username, linkpage);
+      return res.status(201).send({ payload: "Page edited successfully" });
+    } catch (err) {
+      console.error(err);
+      return res.status(400).send({ payload: (err as Error).message });
+    }
+  }
 }

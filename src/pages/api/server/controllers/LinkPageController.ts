@@ -14,5 +14,9 @@ export const LinkPageController = {
     const updatedDocument: User = await db.addLinkPage(username, linkpage);
     return updatedDocument;
   },
+  replaceLinkPage: async (username: string, linkPage: LinkPage) => {
+    const updatedDocument: User = await db.replaceLinkPage(username, linkPage);
+    return updatedDocument;
+  }
 
 };
