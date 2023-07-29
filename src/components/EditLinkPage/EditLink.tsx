@@ -49,7 +49,7 @@ export default function EditLink (props: IEditLinkProps) {
   };
 
   return (
-    <div className='w-96 p-5 mb-5 bg-white rounded-lg'>
+    <div className='p-5 mb-5 bg-white rounded-lg'>
       <div className='flex flex-row items-center mb-5'>
         <div className='h-full mr-5 flex flex-col'>
           {isEditingModeEnabled

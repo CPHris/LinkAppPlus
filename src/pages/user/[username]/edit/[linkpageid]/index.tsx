@@ -40,6 +40,21 @@ export default function EditLinkPage () {
     setDescription(e.target.value);
   };
 
+  const addNewLink = () => {
+    const defaultLink: SocialMediaLink = {
+      img: 'https://w7.pngwing.com/pngs/968/223/png-transparent-logo-twitch-logos-brands-icon-thumbnail.png',
+      title: 'Write the title',
+      subtitle: 'Write the subtitle',
+      url: 'default'
+    };
+
+    setLinks(prevLinks => {
+      const newState = [...prevLinks];
+      newState.push(defaultLink);
+      return newState;
+    });
+  };
+
   const submitForm = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Change state and sumbit changes to backend");
@@ -68,9 +83,15 @@ export default function EditLinkPage () {
             <h2 className='block text-center mb-2 font-semibold'>Bio</h2>
             <textarea onChange={onDescriptionChangeHandler} className='block mx-auto my-0 py-3 px-5 bg-gray-200 w-96 h-32 text-left rounded-md' value={description}></textarea>
           </div>
-          {
-            linkPage.links.map((link, index) => <EditLink link={link} key={link.title} index={index} onChange={wrapLinks} />)
-          }
+          <div className='flex'>
+            <div className='w-1/2 mr-10'>
+              {
+                links.map((link, index) => <EditLink link={link} key={link.title} index={index} onChange={wrapLinks} />)
+              }
+              <button type='button' className='bg-green-400 rounded w-full' onClick={addNewLink}><i className="fa-solid fa-plus text-white"></i></button>
+            </div>
+            <div>preview</div>
+          </div>
           <div className='flex justify-end'>
             <Link href={`/user/${user.username}`} className='text-white bg-red-400 rounded-md p-3 mr-3 font-semibold'>Cancel</Link>
             <button type="submit" className='text-white bg-green-400 rounded-md p-3 font-semibold' >Save Changes</button>
