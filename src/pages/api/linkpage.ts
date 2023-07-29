@@ -25,12 +25,6 @@ export default async function handler (
   }
   if (req.method === 'POST') {
     const { username, linkpage } = req.body;
-    console.log("🚀 ~ file: linkpage.ts:28 ~ linkpage:", linkpage);
-    console.log("🚀 ~ file: linkpage.ts:28 ~ linkpage:", linkpage.pageid);
-    console.log("🚀 ~ file: linkpage.ts:28 ~ linkpage:", linkpage.name);
-    console.log("🚀 ~ file: linkpage.ts:28 ~ username:", username);
-
-    console.log("🚀 ~ file: linkpage.ts:28 ~ req.body:", req.body);
 
     if (!username || !linkpage || !linkpage.pageid || !linkpage.name) {
       return res.status(400).send({ payload: "Missing fields" });
@@ -53,6 +47,20 @@ export default async function handler (
     try {
       await LinkPageController.replaceLinkPage(username, linkpage);
       return res.status(201).send({ payload: "Page edited successfully" });
+    } catch (err) {
+      console.error(err);
+      return res.status(400).send({ payload: (err as Error).message });
+    }
+  }
+
+  if (req.method === 'DELETE') {
+    const { username, pageid } = req.body;
+    if (!username || !pageid) {
+      return res.status(400).send({ payload: "Missing fields" });
+    }
+    try {
+      await LinkPageController.deleteLinkPage(username, pageid);
+      return res.status(201).send({ payload: "Page removed successfully" });
     } catch (err) {
       console.error(err);
       return res.status(400).send({ payload: (err as Error).message });

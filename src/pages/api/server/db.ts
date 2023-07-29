@@ -44,8 +44,16 @@ export const db = {
   },
   replaceLinkPage: async (username: string, linkpage: LinkPage) => {
     const updatedDocument = await UserSchema.findOneAndUpdate(
-      { username, "linkPages.pageid": linkpage.pageid }, // Find the user with the specific username and matching pageid in the linkPages array
-      { $set: { "linkPages.$": linkpage } }, // Update the matching link page with the new linkpage data
+      { username, "linkPages.pageid": linkpage.pageid },
+      { $set: { "linkPages.$": linkpage } },
+      { new: true }
+    );
+    return updatedDocument;
+  },
+  deleteLinkPage: async (username: string, pageid: string) => {
+    const updatedDocument = await UserSchema.findOneAndUpdate(
+      { username },
+      { $pull: { linkPages: { pageid } } },
       { new: true }
     );
     return updatedDocument;

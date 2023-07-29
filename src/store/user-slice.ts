@@ -51,22 +51,11 @@ const userSlice = createSlice({
       newState.push(action.payload);
       state.linkPages = [...newState];
     },
-    //   replaceLinkPage: (state, action) => {
-    //     const newPage = action.payload;
-    //     let existingPage = state.linkPages.find(page => page.pageid === newPage.pageid);
-    //     console.log("🚀 ~ file: user-slice.ts:55 ~ state.linkPages:", state.linkPages);
-    //     console.log("🚀 ~ file: user-slice.ts:58 ~ existingItem:", existingPage);
-    //     if (existingPage && newPage) {
-    //       existingPage.name = newPage.name;
-    //       existingPage.pageid = newPage.pageid;
-    //       existingPage.description = newPage.description;
-    //       existingPage.avatarImg = newPage.avatarImg;
-    //       existingPage.links = [...newPage.links];
-    //     }
-    //   },
-    //   deleteLinkPage: (state, action) => {
-    //     // delete link page
-    //   }
+    deleteLinkPage: (state, action) => {
+      // delete link page
+      const newState = [...state.linkPages];
+      state.linkPages = newState.filter(page => page.pageid !== action.payload);
+    }
   }
 });
 
