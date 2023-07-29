@@ -4,7 +4,7 @@ const socialMediaLinkSchema = new mongoose.Schema({
   img: { type: String, required: true },
   title: { type: String, required: true },
   subtitle: String,
-  link: { type: String, required: true }
+  url: { type: String, required: true }
 });
 
 const linkPageSchema = new mongoose.Schema({
