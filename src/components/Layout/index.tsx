@@ -12,7 +12,7 @@ export default function Layout (props: ILayoutProps) {
   const { username, email, children } = props;
 
   return (
-    <div>
+    <div className='flex flex-col h-screen'>
       <NavBar username={username} email={email} />
       {children}
       <Footer />

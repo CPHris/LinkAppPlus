@@ -61,7 +61,7 @@ const UserPage: NextPage<{ user: User; }> = ({ user }) => {
   return (
     <>
       <Layout username={stateUser.username} email={stateUser.email}>
-        <div className='max-w-4xl mx-auto'>
+        <div className='max-w-4xl mx-auto mb-auto w-full'>
           <h1 className='font-bold text-xl text-center mb-5'>
             My Link Pages
           </h1>

@@ -5,8 +5,10 @@ export interface IFooterProps {
 
 export default function Footer (props: IFooterProps) {
   return (
-    <div>
-      blah blah Footer
+    <div className='text-center p-5 border'>
+      <span className='font-semibold'>
+        A page made in a hurry <i className="fa-regular fa-registered fa-xs"></i>
+      </span>
     </div>
   );
 }

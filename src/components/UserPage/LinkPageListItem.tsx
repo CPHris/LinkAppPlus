@@ -17,7 +17,7 @@ export default function LinkPagesListItem (props: ILinkPagesListItemProps) {
     props.deleteLinkPage(pageid);
   };
   return (
-    <div className='flex justify-between items-center border-b p-5'>
+    <div className='flex flex-row justify-between items-center border-b p-5'>
       <span className='text-md font-semibold'>{name}</span>
       <div>
         <span className='block text-sm font-semibold'>Total visits</span>
