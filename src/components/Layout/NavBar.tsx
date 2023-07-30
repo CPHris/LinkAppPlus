@@ -15,9 +15,10 @@ export default function NavBar (props: INavBarProps) {
     setIsDropDownMenuVisible(prevState => !prevState);
   };
   return (
-    <div>
-      <div>LinkApp</div>
-      <div onClick={toggleDropDownMenu}>{username[0].toUpperCase()}</div>
+    <div className='flex justify-between items-center px-4 py-2 mb-5 border-b border-gray-400'>
+      <div className='font-bold text-lg'>LinkApp</div>
+      {/* <div onClick={toggleDropDownMenu}>{username[0].toUpperCase()}</div> */}
+      <button className='block w-fit px-4 py-2 w-fit rounded-full bg-cyan-500 text-white font-bold text-md ' onClick={toggleDropDownMenu}>{username[0].toUpperCase()}</button>
       {isDropDownMenuVisible && <DropDownMenu username={username} email={email} onclick={toggleDropDownMenu} />}
     </div>
   );
