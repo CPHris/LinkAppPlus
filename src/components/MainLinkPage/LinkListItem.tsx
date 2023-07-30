@@ -7,16 +7,17 @@ export interface ILinkListItemProps {
 }
 
 export default function LinkListItem (props: ILinkListItemProps) {
-  const { title, subtitle, img, url: link } = props.link;
+  const { title, subtitle, img, url } = props.link;
   return (
-    <Link href={link}>
-      <div>
+    <Link className='block p-5 mb-5 bg-white rounded-3xl'
+      href={url}>
+      <div className='flex flex-row items-center'>
         <div>
-          <img src={img} />
+          <img src={img} className='w-20 rounded-md flex mr-5' />
         </div>
-        <div>
-          <h2>{title}</h2>
-          <p>{subtitle}</p>
+        <div className='mr-3'>
+          <span className='block font-bold'>{title}</span>
+          <span className='block '>{subtitle}</span>
         </div>
       </div>
     </Link>

@@ -5,20 +5,26 @@ import LinkList from '@/components/MainLinkPage/LinkList';
 import { LinkPage } from '@/types/User';
 import { GetServerSideProps, NextPage } from 'next';
 import * as React from 'react';
+import { useState } from 'react';
 
 export interface IMainLinkPageProps {
 }
 
 const MainLinkPage: NextPage<{ linkpage: LinkPage; }> = ({ linkpage }) => {
+  const [isBannerVisible, setIsBannerVisible] = useState(true);
   return (
     <>
-      <div>
-        <Avatar name={linkpage.name} img={linkpage.avatarImg} />
-        <h1>{linkpage.name}</h1>
-        <DescriptionBox description={linkpage.description} />
-        {linkpage.links && <LinkList links={linkpage.links} />}
-        <Banner />
-      </div>
+      <main className='bg-orange-400 h-screen'>
+        <div className='max-w-md mx-auto pt-20 pb-5'>
+          <div className='mb-10'>
+            <Avatar name={linkpage.name} img={linkpage.avatarImg} />
+            <h1 className='font-bold text-xl text-center'>{linkpage.name}</h1>
+            <DescriptionBox description={linkpage.description} />
+          </div>
+          {linkpage.links && <LinkList links={linkpage.links} />}
+        </div>
+        {isBannerVisible && <Banner dismissBanner={() => { setIsBannerVisible(false); }} />}
+      </main>
     </>
   );
 };
@@ -28,6 +34,7 @@ export default MainLinkPage;
 export const getServerSideProps: GetServerSideProps = async (context) => {
   //fetch data from API
   let linkpage = {};
+  console.log('ola');
   if (context.params) {
     const { linkpageid } = context.params;
     const response = await fetch(`http://localhost:3000/api/${linkpageid}`);
