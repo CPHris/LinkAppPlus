@@ -42,9 +42,9 @@ export const db = {
       throw err;
     }
   },
-  replaceLinkPage: async (username: string, linkpage: LinkPage) => {
+  replaceLinkPage: async (username: string, linkpage: LinkPage, linkpageid: string) => {
     const updatedDocument = await UserSchema.findOneAndUpdate(
-      { username, "linkPages.pageid": linkpage.pageid },
+      { username, "linkPages.pageid": linkpageid },
       { $set: { "linkPages.$": linkpage } },
       { new: true }
     );
