@@ -71,7 +71,7 @@ const UserPage: NextPage<{ user: User; }> = ({ user }) => {
   return (
     <>
       <Layout username={stateUser.username} email={stateUser.email}>
-        <div className='max-w-4xl mx-auto mb-auto w-full'>
+        <main className='max-w-4xl mx-auto mb-auto w-full py-10'>
           <h1 className='font-bold text-xl text-center mb-5'>
             My Link Pages
           </h1>
@@ -81,7 +81,7 @@ const UserPage: NextPage<{ user: User; }> = ({ user }) => {
             onClick={addNewPage}
           >Add New Page</button>
           {/* <Link href={`${userRoute}/profile`}>Go to profile</Link> */}
-        </div>
+        </main>
       </Layout>
     </>
   );
