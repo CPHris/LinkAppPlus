@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import { userActions } from '@/store/user-slice';
 import { useRouter } from 'next/router';
 import { RootState } from '@/store';
+import { toast } from 'react-toastify';
 
 const UserPage: NextPage<{ user: User; }> = ({ user }) => {
   const dispatch = useDispatch();
@@ -37,10 +38,14 @@ const UserPage: NextPage<{ user: User; }> = ({ user }) => {
         linkpage: newPage
       })
     }).then(response => {
-      dispatch(userActions.addNewLinkPage(newPage));
-      router.push(`${userRoute}/edit/newPage`);
+      if (response.status === 201) {
+        dispatch(userActions.addNewLinkPage(newPage));
+        return router.push(`${userRoute}/edit/newPage`);
+      }
+      toast.error('Something went wrong');
     }).catch(error => {
       console.error(error);
+      toast.error('Something went wrong');
     });
   };
 
@@ -54,8 +59,13 @@ const UserPage: NextPage<{ user: User; }> = ({ user }) => {
     }).then(response => {
       if (response.status === 201) {
         dispatch(userActions.deleteLinkPage(pageid));
+        return toast.success('Link page deleted succesfully');
       }
-    }).catch(error => console.error(error));
+      toast.error('Something went wrong');
+    }).catch(error => {
+      console.error(error);
+      toast.error('Something went wrong');
+    });
   };
 
   return (
