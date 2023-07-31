@@ -33,15 +33,15 @@ export default function RegisterPage (props: IRegisterPageProps) {
 
   return (
     <>
-      <div className='flex flex-col h-screen'>
+      <div className='flex flex-col h-screen bg-gray-100'>
         <div className='mb-5 border-b border-gray-400 relative'>
           <div className='flex justify-between items-center px-4 py-2 max-w-4xl mx-auto'>
             <div className='font-bold text-lg'>LinkApp</div>
             {/* <Link href='/register' className='block w-fit bg-cyan-500 rounded-lg py-1 px-3 text-white font-semibold hover:bg-cyan-600'>Sign in  <i className="fa-solid fa-right-to-bracket"></i></Link> */}
           </div>
         </div>
-        <main className='bg-white mb-auto mx-auto w-full max-w-2xl'>
-          <div className='w-full max-w-xs rounded-2xl border p-5 mx-auto shadow-md'>
+        <main className='mb-auto mx-auto my-auto w-full max-w-2xl'>
+          <div className='w-full max-w-xs rounded-2xl border p-5 mx-auto shadow-md bg-white'>
             <h1 className='font-bold text-center'>Create an account</h1>
             <form className='p-4' onSubmit={submitForm}>
               <label className='block font-semibold text-sm'>Username</label>

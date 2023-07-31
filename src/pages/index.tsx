@@ -8,7 +8,7 @@ export default function Home () {
   return (
     <>
       <div className='flex flex-col h-screen'>
-        <div className='mb-5 border-b border-gray-400 relative'>
+        <div className='mb-5 border-b border-gray-400 relative bg-gray-100 shadow-sm'>
           <div className='flex justify-between items-center px-4 py-2 max-w-4xl mx-auto'>
             <div className='font-bold text-lg'>LinkApp</div>
             <Link href='/register' className='block w-fit bg-cyan-500 rounded-lg py-1 px-3 text-white font-semibold hover:bg-cyan-400'>Sign in  <i className="fa-solid fa-right-to-bracket"></i></Link>

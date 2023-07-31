@@ -97,8 +97,8 @@ export default function EditLinkPage () {
 
   return (
     <Layout username={user.username} email={user.email}>
-      <main className='px-5'>
-        <form className='container max-w-3xl mx-auto my-0'
+      <main className='px-5 bg-gray-100'>
+        <form className='container max-w-3xl mx-auto py-10'
           onSubmit={submitForm}>
           <EditAvatar
             letters={user.username[0]}
