@@ -10,10 +10,9 @@ import { LinkPage, SocialMediaLink } from '@/types/User';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import * as React from 'react';
-import { ChangeEvent, useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import { ColorChangeHandler, ColorResult, SketchPicker } from 'react-color';
 import ColorPicker from '@/components/common/ColorPicker';
 
 export interface IEditLinkPageProps {
@@ -33,8 +32,8 @@ export default function EditLinkPage () {
 
   // TODO Change the default color for colors from the backend
   // if there are no colors in the backend then set default color
-  const [nameColor, setNameColor] = useState('#fff');
-  const [backgroundColor, setBackgroundColor] = useState('22D3EE');
+  const [textColor, setTextColor] = useState('#fff');
+  const [backgroundColor, setBackgroundColor] = useState('#22D3EE');
 
   const wrapLinks = (link: SocialMediaLink, index: number) => {
     setLinks(prevLinks => {
@@ -129,21 +128,21 @@ export default function EditLinkPage () {
                 value={name}
                 onChange={onNameChangeHandler} />
               <ColorPicker className='w-fit'
-                defaultColor={nameColor}
-                setNewColor={setNameColor} />
+                defaultColor={textColor}
+                setNewColor={setTextColor} />
             </div>
+            <ColorPicker className='w-fit mx-auto mb-5'
+              defaultColor={backgroundColor}
+              setNewColor={setBackgroundColor}
+              label='Pick background color' />
             <h2 className='block text-center mb-2 font-semibold'>Change your Link Page URL</h2>
             <div className='mx-auto w-fit flex'>
               <label>www.linkapp.com/</label>
-              <input className='mx-auto my-0 bg-gray-200 text-center rounded-md mb-5'
+              <input className='mx-auto my-0 bg-gray-200 text-center rounded-md'
                 type='text'
                 value={pageid}
                 onChange={onPageIdChangeHandler} />
             </div>
-            <ColorPicker className='w-fit mx-auto'
-              defaultColor={backgroundColor}
-              setNewColor={setBackgroundColor}
-              label='Pick background color' />
           </div>
           <div className='w-full p-8 mb-5 bg-white rounded-lg'>
             <h2 className='block text-center mb-2 font-semibold'>Bio</h2>
@@ -183,8 +182,8 @@ export default function EditLinkPage () {
               <div className='max-w-md mx-auto'>
                 <div className='mb-10'>
                   <Avatar name={name} img={avatarImg} />
-                  <h1 className='font-bold text-xl text-center' style={{ "color": nameColor }}>{name}</h1>
-                  <DescriptionBox description={description} />
+                  <h1 className='font-bold text-xl text-center' style={{ "color": textColor }}>{name}</h1>
+                  <DescriptionBox description={description} textColor={textColor} />
                 </div>
                 {links && <LinkList links={links} />}
               </div>

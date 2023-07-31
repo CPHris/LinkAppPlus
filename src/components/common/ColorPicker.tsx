@@ -10,9 +10,9 @@ export interface IColorPickerProps {
 }
 
 export default function ColorPicker (props: IColorPickerProps) {
+  const [color, setColor] = useState(props.defaultColor);
   const className = props.className ? props.className : '';
   const [editMode, setEditMode] = useState(false);
-  const [color, setColor] = useState(props.defaultColor);
 
   const onColorChange = (pickerColor: ColorResult, e: React.ChangeEvent<HTMLInputElement>) => {
     setColor(pickerColor.hex);
