@@ -10,9 +10,11 @@ import { LinkPage, SocialMediaLink } from '@/types/User';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import * as React from 'react';
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import { ColorChangeHandler, ColorResult, SketchPicker } from 'react-color';
+import ColorPicker from '@/components/common/ColorPicker';
 
 export interface IEditLinkPageProps {
 }
@@ -28,6 +30,8 @@ export default function EditLinkPage () {
   const [description, setDescription] = useState(linkPage.description);
   const [links, setLinks] = useState(linkPage.links);
   const [pageid, setPageid] = useState(linkpageid as string);
+
+  const [nameColor, setNameColor] = useState('#fff');
 
   const wrapLinks = (link: SocialMediaLink, index: number) => {
     setLinks(prevLinks => {
@@ -116,10 +120,15 @@ export default function EditLinkPage () {
             img={linkPage.avatarImg} />
           <div className='w-full p-8 mb-5 bg-white rounded-lg'>
             <h2 className='block text-center mb-2 font-semibold'>Name</h2>
-            <input className='block mx-auto my-0 px-3 bg-gray-200 text-center rounded-md mb-5'
-              type='text'
-              value={name}
-              onChange={onNameChangeHandler} />
+            <div className='mx-auto my-0 flex justify-center items-center mb-5'>
+              <input className='px-3 bg-gray-200 text-center rounded-md mr-2'
+                type='text'
+                value={name}
+                onChange={onNameChangeHandler} />
+              <ColorPicker className='w-fit'
+                defaultColor={nameColor}
+                setNewColor={setNameColor} />
+            </div>
             <h2 className='block text-center mb-2 font-semibold'>Change your Link Page URL</h2>
             <div className='mx-auto w-fit flex'>
               <label>www.linkapp.com/</label>
@@ -166,7 +175,7 @@ export default function EditLinkPage () {
               <div className='max-w-md mx-auto'>
                 <div className='mb-10'>
                   <Avatar name={name} img={avatarImg} />
-                  <h1 className='font-bold text-xl text-center text-white'>{name}</h1>
+                  <h1 className='font-bold text-xl text-center' style={{ "color": nameColor }}>{name}</h1>
                   <DescriptionBox description={description} />
                 </div>
                 {links && <LinkList links={links} />}
