@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import * as React from 'react';
 import { FormEvent, useState } from 'react';
+import { toast } from 'react-toastify';
 
 export interface IRegisterPageProps {
 }
@@ -26,7 +27,10 @@ export default function RegisterPage (props: IRegisterPageProps) {
       body: JSON.stringify(requestBody)
     }).then(response => {
       if (response.status === 201) {
-        router.push(`/user/${username}`);
+        return router.push(`/user/${username}`);
+      }
+      if (response.status === 400) {
+        toast.error("User already exists");
       }
     });
   };
