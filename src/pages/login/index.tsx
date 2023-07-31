@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import * as React from 'react';
 import { FormEvent, useState } from 'react';
+import { toast } from 'react-toastify';
 
 export interface IRegisterPageProps {
 }
@@ -27,7 +28,9 @@ export default function RegisterPage (props: IRegisterPageProps) {
         return router.push(`/user/${username}`);
       }
       if (response.status === 404) {
-        response.json().then(data => console.log(data.message));
+        response.json().then(data => {
+          toast.error(data.message);
+        });
       }
     });
   };
