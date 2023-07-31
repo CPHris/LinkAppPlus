@@ -26,7 +26,9 @@ const UserPage: NextPage<{ user: User; }> = ({ user }) => {
       pageid: 'newPage',
       name: 'New Page',
       description: 'This is a new page',
-      links: []
+      links: [],
+      backgroundImg: '#22D3EE',
+      textColor: "#fff"
     };
     fetch('http://localhost:3000/api/linkpage', {
       headers: {

@@ -14,12 +14,12 @@ const MainLinkPage: NextPage<{ linkpage: LinkPage; }> = ({ linkpage }) => {
   const [isBannerVisible, setIsBannerVisible] = useState(true);
   return (
     <>
-      <main className='bg-orange-400 h-screen'>
+      <main className='h-screen' style={{ 'backgroundColor': linkpage.backgroundImg }}>
         <div className='max-w-md mx-auto pt-20 p-5'>
           <div className='mb-10'>
             <Avatar name={linkpage.name} img={linkpage.avatarImg} />
-            <h1 className='font-bold text-xl text-center text-white'>{linkpage.name}</h1>
-            <DescriptionBox description={linkpage.description} />
+            <h1 className='font-bold text-xl text-center' style={{ 'color': linkpage.textColor }}>{linkpage.name}</h1>
+            <DescriptionBox description={linkpage.description} textColor={linkpage.textColor} />
           </div>
           {linkpage.links && <LinkList links={linkpage.links} />}
         </div>

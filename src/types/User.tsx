@@ -11,7 +11,8 @@ export type LinkPage = {
   name: string,
   avatarImg?: string,
   description: string,
-  backgroundImg?: string;
+  backgroundImg: string,
+  textColor: string,
   links: SocialMediaLink[] | [];
 };
 

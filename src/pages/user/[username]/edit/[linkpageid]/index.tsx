@@ -32,8 +32,8 @@ export default function EditLinkPage () {
 
   // TODO Change the default color for colors from the backend
   // if there are no colors in the backend then set default color
-  const [textColor, setTextColor] = useState('#fff');
-  const [backgroundColor, setBackgroundColor] = useState('#22D3EE');
+  const [textColor, setTextColor] = useState(linkPage.textColor);
+  const [backgroundColor, setBackgroundColor] = useState(linkPage.backgroundImg);
 
   const wrapLinks = (link: SocialMediaLink, index: number) => {
     setLinks(prevLinks => {
@@ -86,7 +86,7 @@ export default function EditLinkPage () {
     e.preventDefault();
     const newLinkPage: LinkPage = {
       _id: linkPage._id,
-      pageid, avatarImg, name, description, links
+      pageid, avatarImg, name, description, links, textColor, backgroundImg: backgroundColor
     };
     // dispatch(userActions.replaceLinkPage(newLinkPage));
     const response = await fetch('http://localhost:3000/api/linkpage', {

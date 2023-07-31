@@ -13,6 +13,7 @@ const linkPageSchema = new mongoose.Schema({
   avatarImg: String,
   description: String,
   backgroundImg: String,
+  textColor: String,
   links: [socialMediaLinkSchema]
 });
 
