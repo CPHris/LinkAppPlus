@@ -152,7 +152,8 @@ export default function EditLinkPage () {
         </form>
         <div className='w-full basis-1/3 px-5 py-10'>
           <div className='bg-orange-400 rounded-2xl sticky top-5 overflow-y-scroll right-30 max-w-xs' style={{ 'maxHeight': '34rem' }}>
-            <div className='bg-black bg-opacity-40 py-10 px-5 relative' >
+            {/* <div className='bg-black bg-opacity-40 py-10 px-5 relative' > */}
+            <div className='py-10 px-5 relative' >
               <span className='text-white font-bold text-sm absolute top-2 left-3'>PREVIEW</span>
               <Link className='text-white font-bold text-sm absolute top-2 right-3' href={`/${linkpageid}`}>Go to page <i className="fa-solid fa-link"></i></Link>
               <div className='max-w-md mx-auto'>
