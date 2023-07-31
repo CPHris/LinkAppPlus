@@ -12,6 +12,7 @@ import { useRouter } from 'next/router';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 export interface IEditLinkPageProps {
 }
@@ -93,9 +94,15 @@ export default function EditLinkPage () {
         linkpageid: linkPage.pageid
       })
     });
+
     const data = await response.json();
-    console.log(data);
-    window.history.replaceState({}, '', `/user/${user.username}/edit/${pageid}`);
+    if (response.status === 201) {
+      window.history.replaceState({}, '', `/user/${user.username}/edit/${pageid}`);
+      toast.success(data.payload);
+    } else {
+      console.error(data.payload);
+      toast.error("Something went wrong");
+    }
   };
 
   return (
