@@ -15,10 +15,10 @@ const MainLinkPage: NextPage<{ linkpage: LinkPage; }> = ({ linkpage }) => {
   return (
     <>
       <main className='bg-orange-400 h-screen'>
-        <div className='max-w-md mx-auto pt-20 pb-5'>
+        <div className='max-w-md mx-auto pt-20 p-5'>
           <div className='mb-10'>
             <Avatar name={linkpage.name} img={linkpage.avatarImg} />
-            <h1 className='font-bold text-xl text-center'>{linkpage.name}</h1>
+            <h1 className='font-bold text-xl text-center text-white'>{linkpage.name}</h1>
             <DescriptionBox description={linkpage.description} />
           </div>
           {linkpage.links && <LinkList links={linkpage.links} />}

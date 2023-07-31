@@ -6,7 +6,7 @@ export interface IDescriptionBoxProps {
 
 export default function DescriptionBox (props: IDescriptionBoxProps) {
   return (
-    <div className='text-center p-2 text-white'>
+    <div className='text-center p-2 text-white text-sm'>
       {props.description}
     </div>
   );

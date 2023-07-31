@@ -13,11 +13,11 @@ export default function LinkListItem (props: ILinkListItemProps) {
       href={url}>
       <div className='flex flex-row items-center'>
         <div>
-          <img src={img} className='w-20 sm:w-10 rounded-md flex mr-5' />
+          <img src={img} className='w-10 rounded-md flex mr-5' />
         </div>
         <div className='mr-3'>
-          <span className='block font-bold sm:text-sm'>{title}</span>
-          <span className='block sm:text-sm'>{subtitle}</span>
+          <span className='block font-bold text-sm'>{title}</span>
+          <span className='block text-sm'>{subtitle}</span>
         </div>
       </div>
     </Link>
