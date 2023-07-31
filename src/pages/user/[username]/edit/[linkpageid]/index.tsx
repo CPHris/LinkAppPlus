@@ -31,7 +31,10 @@ export default function EditLinkPage () {
   const [links, setLinks] = useState(linkPage.links);
   const [pageid, setPageid] = useState(linkpageid as string);
 
+  // TODO Change the default color for colors from the backend
+  // if there are no colors in the backend then set default color
   const [nameColor, setNameColor] = useState('#fff');
+  const [backgroundColor, setBackgroundColor] = useState('22D3EE');
 
   const wrapLinks = (link: SocialMediaLink, index: number) => {
     setLinks(prevLinks => {
@@ -132,11 +135,15 @@ export default function EditLinkPage () {
             <h2 className='block text-center mb-2 font-semibold'>Change your Link Page URL</h2>
             <div className='mx-auto w-fit flex'>
               <label>www.linkapp.com/</label>
-              <input className='mx-auto my-0 bg-gray-200 text-center rounded-md'
+              <input className='mx-auto my-0 bg-gray-200 text-center rounded-md mb-5'
                 type='text'
                 value={pageid}
                 onChange={onPageIdChangeHandler} />
             </div>
+            <ColorPicker className='w-fit mx-auto'
+              defaultColor={backgroundColor}
+              setNewColor={setBackgroundColor}
+              label='Pick background color' />
           </div>
           <div className='w-full p-8 mb-5 bg-white rounded-lg'>
             <h2 className='block text-center mb-2 font-semibold'>Bio</h2>
@@ -167,7 +174,8 @@ export default function EditLinkPage () {
           </div>
         </form>
         <div className='w-full basis-1/3 px-5 py-10'>
-          <div className='bg-orange-400 rounded-2xl sticky top-5 overflow-y-scroll right-30 max-w-xs' style={{ 'maxHeight': '34rem' }}>
+          <div className='rounded-2xl sticky top-5 overflow-y-scroll right-30 max-w-xs'
+            style={{ 'maxHeight': '34rem', 'backgroundColor': backgroundColor }}>
             {/* <div className='bg-black bg-opacity-40 py-10 px-5 relative' > */}
             <div className='py-10 px-5 relative' >
               <span className='text-white font-bold text-sm absolute top-2 left-3'>PREVIEW</span>

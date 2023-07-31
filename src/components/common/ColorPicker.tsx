@@ -16,7 +16,6 @@ export default function ColorPicker (props: IColorPickerProps) {
 
   const onColorChange = (pickerColor: ColorResult, e: React.ChangeEvent<HTMLInputElement>) => {
     setColor(pickerColor.hex);
-    console.log(color);
     props.setNewColor(color);
   };
 
