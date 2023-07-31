@@ -32,7 +32,7 @@ export default function RegisterPage (props: IRegisterPageProps) {
       if (response.status === 400) {
         toast.error("User already exists");
       }
-    });
+    }).catch(error => toast.error("Something went wrong"));;
   };
 
   return (

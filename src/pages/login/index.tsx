@@ -32,7 +32,7 @@ export default function RegisterPage (props: IRegisterPageProps) {
           toast.error(data.message);
         });
       }
-    });
+    }).catch(error => toast.error("Something went wrong"));
   };
 
   return (
