@@ -16,7 +16,7 @@ export default async function handler (
     const user = await UserController.getUser(username);
     if (user) {
       // TODO Auth
-      return res.send({ message: "Logged in", user });
+      return res.status(200).send({ message: "Logged in", user });
     }
     return res.status(404).send({ message: "Wrong credentials" });
   }
