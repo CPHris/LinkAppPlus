@@ -5,7 +5,6 @@ import Avatar from '@/components/MainLinkPage/Avatar';
 import DescriptionBox from '@/components/MainLinkPage/DescriptionBox';
 import LinkList from '@/components/MainLinkPage/LinkList';
 import { RootState } from '@/store';
-import { userActions } from '@/store/user-slice';
 import { LinkPage, SocialMediaLink } from '@/types/User';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -14,6 +13,8 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import ColorPicker from '@/components/common/ColorPicker';
+import { defaultLink } from '@/defaultLink';
+import { http } from '@/apiService';
 
 export interface IEditLinkPageProps {
 }
@@ -30,8 +31,6 @@ export default function EditLinkPage () {
   const [links, setLinks] = useState(linkPage.links);
   const [pageid, setPageid] = useState(linkpageid as string);
 
-  // TODO Change the default color for colors from the backend
-  // if there are no colors in the backend then set default color
   const [textColor, setTextColor] = useState(linkPage.textColor);
   const [backgroundColor, setBackgroundColor] = useState(linkPage.backgroundImg);
 
@@ -43,7 +42,7 @@ export default function EditLinkPage () {
     });
   };
 
-  const onLinkDelete = (index: number) => {
+  const onLinkDeleteHandler = (index: number) => {
     setLinks(prevLinks => {
       let newState = [...prevLinks];
       newState.splice(index, 1);
@@ -68,13 +67,6 @@ export default function EditLinkPage () {
   };
 
   const addNewLink = () => {
-    const defaultLink: SocialMediaLink = {
-      img: 'https://w7.pngwing.com/pngs/968/223/png-transparent-logo-twitch-logos-brands-icon-thumbnail.png',
-      title: 'Write the title',
-      subtitle: 'Write the subtitle',
-      url: 'default'
-    };
-
     setLinks(prevLinks => {
       const newState = [...prevLinks];
       newState.push(defaultLink);
@@ -86,29 +78,20 @@ export default function EditLinkPage () {
     e.preventDefault();
     const newLinkPage: LinkPage = {
       _id: linkPage._id,
-      pageid, avatarImg, name, description, links, textColor, backgroundImg: backgroundColor
+      pageid, avatarImg, name, description,
+      links, textColor, backgroundImg: backgroundColor
     };
-    // dispatch(userActions.replaceLinkPage(newLinkPage));
-    const response = await fetch('http://localhost:3000/api/linkpage', {
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      method: 'PUT',
-      body: JSON.stringify({
-        username: user.username,
-        linkpage: newLinkPage,
-        linkpageid: linkPage.pageid
-      })
-    });
 
-    const data = await response.json();
-    if (response.status === 201) {
+    const response = await http.editPage({
+      username: user.username,
+      linkpage: newLinkPage,
+      linkpageid: linkPage.pageid
+    });
+    if (response && response.status === 201) {
       window.history.replaceState({}, '', `/user/${user.username}/edit/${pageid}`);
-      toast.success(data.payload);
-    } else {
-      console.error(data.payload);
-      toast.error("Something went wrong");
+      return toast.success(response.message);
     }
+    toast.error("Something went wrong");
   };
 
   return (
@@ -158,7 +141,7 @@ export default function EditLinkPage () {
                   key={link.title}
                   index={index}
                   onChange={wrapLinks}
-                  onDelete={onLinkDelete} />)
+                  onDelete={onLinkDeleteHandler} />)
             }
             <button className='bg-green-400 rounded w-full'
               type='button'
