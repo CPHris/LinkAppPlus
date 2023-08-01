@@ -24,11 +24,12 @@ const UserPage: NextPage<{ user: User; }> = ({ user }) => {
   const stateUser = useSelector((state: RootState) => state.user);
 
   const addNewPage = async () => {
-    const page = createDefaultLinkPage();
+    const pageid = Date.now().toString();
+    const page = createDefaultLinkPage(pageid);
     const response = await http.addNewPage({ username: user.username, linkpage: page });
     if (response && response.status === 201) {
       dispatch(userActions.addNewLinkPage(page));
-      return router.push(`${userRoute}/edit/newPage`);
+      return router.push(`${userRoute}/edit/${pageid}`);
     }
     toast.error('Something went wrong');
   };

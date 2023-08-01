@@ -1,8 +1,8 @@
 import { LinkPage } from "./types/User";
 
-export const createDefaultLinkPage = (): LinkPage => {
+export const createDefaultLinkPage = (pageid: string): LinkPage => {
   return {
-    pageid: Date.now().toString(),
+    pageid,
     name: 'New Page',
     description: 'This is a new page',
     links: [],
