@@ -14,7 +14,7 @@ export default function LinkListItem (props: ILinkListItemProps) {
       href={url}>
       <div className='flex flex-row items-center'>
         <div>
-          <Image src={img} className='w-10 rounded-md flex mr-5' alt='Social media icon' />
+          <img src={img} className='w-10 rounded-md flex mr-5' alt='Social media icon' />
         </div>
         <div className='mr-3'>
           <span className='block font-bold text-sm'>{title}</span>
