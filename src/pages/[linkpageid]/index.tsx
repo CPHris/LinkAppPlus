@@ -32,9 +32,7 @@ const MainLinkPage: NextPage<{ linkpage: LinkPage; }> = ({ linkpage }) => {
 export default MainLinkPage;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  //fetch data from API
   let linkpage = {};
-  console.log('ola');
   if (context.params) {
     const { linkpageid } = context.params;
     const response = await fetch(`http://localhost:3000/api/${linkpageid}`);
