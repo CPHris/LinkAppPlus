@@ -60,7 +60,7 @@ export default function RegisterPage (props: IRegisterPageProps) {
                 onChange={(e) => { setPassword(e.target.value); }}></input>
               <button className='block bg-cyan-500 rounded-lg px-3 py-2 text-white font-semibold text-sm hover:bg-cyan-400'>Login</button>
             </form>
-            <Link className='px-4 text-cyan-500 hover:underline hover:text-cyan-400 text-sm' href='/register'>I don't have an account</Link>
+            <Link className='px-4 text-cyan-500 hover:underline hover:text-cyan-400 text-sm' href='/register'>I don`&apos;`t have an account</Link>
           </div>
         </main>
         <Footer />

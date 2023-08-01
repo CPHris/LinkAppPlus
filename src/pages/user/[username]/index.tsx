@@ -17,7 +17,7 @@ const UserPage: NextPage<{ user: User; }> = ({ user }) => {
 
   useEffect(() => {
     dispatch(userActions.login(user));
-  }, []);
+  }, [dispatch, user]);
 
   const stateUser = useSelector((state: RootState) => state.user);
 

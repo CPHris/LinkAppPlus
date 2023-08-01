@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import * as React from 'react';
 import { useState } from 'react';
 
@@ -24,7 +25,7 @@ export default function EditAvatar (props: IEditAvatarProps) {
   return (
     <div className='w-full p-8 mb-5 bg-white rounded-lg'>
       <h2 className='block text-center mb-2 font-semibold'>Avatar</h2>
-      {imgSrc && imgSrc !== '' ? <img src={imgSrc} className='mt-0 mb-5 mx-auto w-36 rounded-full' /> :
+      {imgSrc && imgSrc !== '' ? <Image src={imgSrc} className='mt-0 mb-5 mx-auto w-36 rounded-full' alt='avatar' /> :
         <div className='px-10 py-8 w-fit rounded-full bg-cyan-500 text-white font-bold text-3xl mx-auto mb-5'>{props.letters.toUpperCase()}</div>
       }
       <div className='w-fit mx-auto my-0'>

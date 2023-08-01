@@ -1,4 +1,5 @@
 import { SocialMediaLink } from '@/types/User';
+import Image from 'next/image';
 import Link from 'next/link';
 import * as React from 'react';
 
@@ -13,7 +14,7 @@ export default function LinkListItem (props: ILinkListItemProps) {
       href={url}>
       <div className='flex flex-row items-center'>
         <div>
-          <img src={img} className='w-10 rounded-md flex mr-5' />
+          <Image src={img} className='w-10 rounded-md flex mr-5' alt='Social media icon' />
         </div>
         <div className='mr-3'>
           <span className='block font-bold text-sm'>{title}</span>

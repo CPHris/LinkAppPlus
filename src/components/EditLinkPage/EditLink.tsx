@@ -1,4 +1,5 @@
 import { SocialMediaLink } from '@/types/User';
+import Image from 'next/image';
 import * as React from 'react';
 import { useState } from 'react';
 
@@ -58,7 +59,7 @@ export default function EditLink (props: IEditLinkProps) {
           }
           <button type='button' className='px-1 bg-red-400 rounded' onClick={() => { props.onDelete(props.index); }}><i className="fa-solid fa-trash fa-xs text-white"></i></button>
         </div>
-        <img src={link.img} className='w-20 rounded-md flex mr-5' />
+        <Image src={link.img} className='w-20 rounded-md flex mr-5' alt='Social media icon' />
         {isEditingModeEnabled
           ? (<div className='mr-3'>
             <input type='text' onChange={onTitleChange} value={title} className='block mx-auto mt-0 mb-3 px-3 bg-gray-200 text-center rounded-md' />
