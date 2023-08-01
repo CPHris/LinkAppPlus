@@ -1,5 +1,5 @@
 import LinkPagesList from '@/components/UserPage/LinkPagesList';
-import { LinkPage, User } from '@/types/User';
+import { User } from '@/types/User';
 import { GetServerSideProps, NextPage } from 'next';
 import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,6 +9,8 @@ import { userActions } from '@/store/user-slice';
 import { useRouter } from 'next/router';
 import { RootState } from '@/store';
 import { toast } from 'react-toastify';
+import { createDefaultLinkPage } from '@/defaultLinkPage';
+import { http } from '@/apiService';
 
 const UserPage: NextPage<{ user: User; }> = ({ user }) => {
   const dispatch = useDispatch();
@@ -21,35 +23,16 @@ const UserPage: NextPage<{ user: User; }> = ({ user }) => {
 
   const stateUser = useSelector((state: RootState) => state.user);
 
-  const addNewPage = () => {
-    const newPage: LinkPage = {
-      pageid: 'newPage',
-      name: 'New Page',
-      description: 'This is a new page',
-      links: [],
-      backgroundImg: '#22D3EE',
-      textColor: "#fff"
-    };
-    fetch('http://localhost:3000/api/linkpage', {
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      method: 'POST',
-      body: JSON.stringify({
-        username: user.username,
-        linkpage: newPage
-      })
-    }).then(response => {
-      if (response.status === 201) {
-        dispatch(userActions.addNewLinkPage(newPage));
-        return router.push(`${userRoute}/edit/newPage`);
-      }
-      toast.error('Something went wrong');
-    }).catch(error => {
-      console.error(error);
-      toast.error('Something went wrong');
-    });
+  const addNewPage = async () => {
+    const page = createDefaultLinkPage();
+    const response = await http.addNewPage({ username: user.username, linkpage: page });
+    if (response && response.status === 201) {
+      dispatch(userActions.addNewLinkPage(page));
+      return router.push(`${userRoute}/edit/newPage`);
+    }
+    toast.error('Something went wrong');
   };
+
 
   const deleteLinkPage = (pageid: string) => {
     fetch('http://localhost:3000/api/linkpage', {
