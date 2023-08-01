@@ -17,10 +17,12 @@ const UserPage: NextPage<{ user: User; }> = ({ user }) => {
   const userRoute = `/user/${user.username}`;
   const router = useRouter();
 
+  // Adding the user data from the backend to redux store
   useEffect(() => {
     dispatch(userActions.login(user));
   }, [dispatch, user]);
 
+  // Using user data from redux store
   const stateUser = useSelector((state: RootState) => state.user);
 
   const addNewPage = async () => {
@@ -55,7 +57,6 @@ const UserPage: NextPage<{ user: User; }> = ({ user }) => {
             type='button'
             onClick={addNewPage}
           >Add New Page</button>
-          {/* <Link href={`${userRoute}/profile`}>Go to profile</Link> */}
         </main>
       </Layout>
     </>
