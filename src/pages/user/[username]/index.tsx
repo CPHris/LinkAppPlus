@@ -33,24 +33,13 @@ const UserPage: NextPage<{ user: User; }> = ({ user }) => {
     toast.error('Something went wrong');
   };
 
-
-  const deleteLinkPage = (pageid: string) => {
-    fetch('http://localhost:3000/api/linkpage', {
-      headers: {
-        'Content-type': 'application/json'
-      },
-      method: 'DELETE',
-      body: JSON.stringify({ username: stateUser.username, pageid })
-    }).then(response => {
-      if (response.status === 201) {
-        dispatch(userActions.deleteLinkPage(pageid));
-        return toast.success('Link page deleted succesfully');
-      }
-      toast.error('Something went wrong');
-    }).catch(error => {
-      console.error(error);
-      toast.error('Something went wrong');
-    });
+  const deleteLinkPage = async (pageid: string) => {
+    const response = await http.deletePage({ username: stateUser.username, pageid });
+    if (response && response.status === 201) {
+      dispatch(userActions.deleteLinkPage(pageid));
+      return toast.success('Link page deleted succesfully');
+    }
+    toast.error('Something went wrong');
   };
 
   return (
