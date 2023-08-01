@@ -6,6 +6,11 @@ export type AddNewPageRequest = {
   linkpage: LinkPage;
 };
 
+export type DeletePageRequest = {
+  username: string,
+  pageid: string;
+};
+
 export const http = {
   addNewPage: async ({ username, linkpage }: AddNewPageRequest) => {
     try {
@@ -21,6 +26,19 @@ export const http = {
       console.error(error);
       toast.error('Something went wrong');
     }
-
+  },
+  deletePage: async ({ username, pageid }: DeletePageRequest) => {
+    try {
+      const response = await fetch('/api/linkpage', {
+        headers: { 'Content-type': 'application/json' },
+        method: 'DELETE',
+        body: JSON.stringify({ username, pageid })
+      });
+      const data = await response.json();
+      return { status: response.status, message: data.payload };
+    } catch (error) {
+      console.error(error);
+      toast.error('Something went wrong');
+    }
   }
 };
