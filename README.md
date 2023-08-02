@@ -32,8 +32,8 @@ Because this project has been developed in only one week it has some flaws to fi
 - At this moment, any user can create a link page with a `pageid` that already exists. The database allows it and it shouldn't.
 - Error handling in the server side should be more clear.
 - At this moment users can be created without storing a password. The `UserSchema` should bemodified to be able to store a hashed password.
-- Nextjs provides the object `next/image` that makes more efficient loading images. Due to an error with `src`'s that are from outside of the domain, `<img>` tag is being used in some places. Find the solution to be able to use `next/image`
-- Responses type in the server side are not very consisntent. Sometimes return `payload`, sometimes return `message`. Design a solution for a more consistent typing.
+- Nextjs provides `next/image` object that makes more efficient loading images. Due to an error with `src`'s that are from outside of the domain, `<img>` tag is being used in some places. Find the solution to be able to use `next/image`
+- Responses type in the server side are not very consistent. Sometimes return `payload`, sometimes return `message`. Design a solution for a more consistent typing.
 - In `getServerSideProps` functions, when fetching data, the request is made to a hardcoded URL `https://localhost:3000`. Find a way to make it dynamic so when the app is deployed it works.
 
 ### Not so urgent
@@ -61,6 +61,8 @@ Because this project has been developed in only one week it has some flaws to fi
 - Allow to put a background image instead of a color.
 - Allow background color to be a fade.
 - Show when the user is livestreaming by integrating with YouTube and Twitch APIs
+- Implement user profile page and allow the user to change their data.
+- Add email confirmation when register.
 - Implement the analytics page to show how many people is clicking the page, location, gender and age. Today, last 30 days, last 6 months, last year, lifetime.
 - Integrate with Stripe and make some of the features premium.
 - Allow users to deploy their own linkpage on their own domain.
