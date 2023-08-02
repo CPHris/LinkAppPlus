@@ -66,7 +66,7 @@ export default function EditLinkPage () {
     setDescription(e.target.value);
   };
 
-  const addNewLink = () => {
+  const onAddNewLinkHandler = () => {
     setLinks(prevLinks => {
       const newState = [...prevLinks];
       newState.push(defaultLink);
@@ -97,6 +97,7 @@ export default function EditLinkPage () {
   return (
     <Layout username={user.username} email={user.email}>
       <main className='bg-gray-100 flex'>
+        {/* TODO - Create an input component an reuse */}
         <form className='container max-w-3xl h-full mx-auto py-10 w-full basis-2/3 overflow-auto px-5'
           onSubmit={submitForm}>
           <EditAvatar
@@ -145,7 +146,7 @@ export default function EditLinkPage () {
             }
             <button className='bg-green-400 rounded w-full'
               type='button'
-              onClick={addNewLink}>
+              onClick={onAddNewLinkHandler}>
               <i className="fa-solid fa-plus text-white"></i>
             </button>
           </div>
@@ -155,6 +156,7 @@ export default function EditLinkPage () {
               type="submit" >Save Changes</button>
           </div>
         </form>
+        {/* PREVIEW */}
         <div className='w-full basis-1/3 px-5 py-10'>
           <div className='rounded-2xl sticky top-5 overflow-y-scroll right-30 max-w-xs'
             style={{ 'maxHeight': '34rem', 'backgroundColor': backgroundColor }}>
