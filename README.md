@@ -3,6 +3,9 @@ LinkApp is a project to have all your social links in one place. It is developed
 ![Link Page](image.png)
 ![Alt text](image-1.png)
 
+## Watch the demo
+[Link to the demo](https://youtu.be/IRLtIqtumOg)
+
 ## Getting Started
 Fork this repo and clone it in to your local environment.
 
