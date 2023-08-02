@@ -1,3 +1,4 @@
+import { http } from '@/apiService';
 import Footer from '@/components/Layout/Footer';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -15,24 +16,13 @@ export default function RegisterPage (props: IRegisterPageProps) {
   const [password, setPassword] = useState('');
   const [confirmedPassword, setConfirmedPassword] = useState('');
 
-  const submitForm = (e: FormEvent) => {
+  const submitForm = async (e: FormEvent) => {
     e.preventDefault();
-    const requestBody = { username, email };
-
-    fetch('http://localhost:3000/api/register', {
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      method: 'POST',
-      body: JSON.stringify(requestBody)
-    }).then(response => {
-      if (response.status === 201) {
-        return router.push(`/user/${username}`);
-      }
-      if (response.status === 400) {
-        toast.error("User already exists");
-      }
-    }).catch(error => toast.error("Something went wrong"));;
+    const response = await http.register(username, email);
+    if (response && response.status === 201) {
+      return router.push(`/user/${username}`);
+    }
+    toast.error("User already exists");
   };
 
   return (

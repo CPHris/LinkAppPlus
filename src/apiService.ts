@@ -76,5 +76,19 @@ export const http = {
       console.error(error);
       toast.error("Something went wrong");
     }
+  },
+  register: async (username: string, email: string) => {
+    try {
+      const response = await fetch('/api/register', {
+        headers: { 'Content-Type': 'application/json' },
+        method: 'POST',
+        body: JSON.stringify({ username, email })
+      });
+      const data = await response.json();
+      return { status: response.status, message: data.message };
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong");
+    }
   }
 };
