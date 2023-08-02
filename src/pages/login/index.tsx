@@ -1,3 +1,4 @@
+import { http } from '@/apiService';
 import Footer from '@/components/Layout/Footer';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -13,26 +14,13 @@ export default function RegisterPage (props: IRegisterPageProps) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const submitForm = (e: FormEvent) => {
+  const submitForm = async (e: FormEvent) => {
     e.preventDefault();
-    const requestBody = { username };
-
-    fetch('http://localhost:3000/api/login', {
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      method: 'POST',
-      body: JSON.stringify(requestBody)
-    }).then(response => {
-      if (response.status === 200) {
-        return router.push(`/user/${username}`);
-      }
-      if (response.status === 404) {
-        response.json().then(data => {
-          toast.error(data.message);
-        });
-      }
-    }).catch(error => toast.error("Something went wrong"));
+    const response = await http.login(username);
+    if (response && response.status === 200) {
+      return router.push(`/user/${username}`);
+    }
+    toast.error("Wrong credentials");
   };
 
   return (
@@ -53,7 +41,6 @@ export default function RegisterPage (props: IRegisterPageProps) {
                 value={username}
                 required
                 onChange={(e) => { setUsername(e.target.value); }}></input>
-
               <label className='block font-semibold text-sm'>Pasword</label>
               <input type='password' className='block border-2 mb-2 rounded mb-8'
                 value={password}

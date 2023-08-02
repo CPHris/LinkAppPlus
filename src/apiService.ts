@@ -62,5 +62,19 @@ export const http = {
       console.error(error);
       toast.error('Something went wrong');
     }
+  },
+  login: async (username: string) => {
+    try {
+      const response = await fetch('/api/login', {
+        headers: { 'Content-Type': 'application/json' },
+        method: 'POST',
+        body: JSON.stringify({ username })
+      });
+      const data = await response.json();
+      return { status: response.status, message: data.message };
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong");
+    }
   }
 };
