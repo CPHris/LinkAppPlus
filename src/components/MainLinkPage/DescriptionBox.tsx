@@ -5,11 +5,14 @@ export interface IDescriptionBoxProps {
   textColor?: string;
 }
 
-export default function DescriptionBox (props: IDescriptionBoxProps) {
-  const textColor = props.textColor ? props.textColor : "black";
+export default function DescriptionBox(props: IDescriptionBoxProps) {
+  const textColor = props.textColor ? props.textColor : 'black';
   return (
-    <div className='text-center p-2 text-white text-sm' style={{ 'color': textColor }}>
+    <div
+      className="text-center p-2 text-white text-sm"
+      style={{ color: textColor }}
+    >
       {props.description}
-    </div >
+    </div>
   );
 }

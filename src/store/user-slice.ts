@@ -1,10 +1,10 @@
-import { User } from "@/types/User";
-import { createSlice } from "@reduxjs/toolkit";
+import { User } from '@/types/User';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState: User = {
-  username: "default",
-  email: "default",
-  linkPages: []
+  username: 'default',
+  email: 'default',
+  linkPages: [],
 };
 
 const userSlice = createSlice({
@@ -24,9 +24,11 @@ const userSlice = createSlice({
     deleteLinkPage: (state, action) => {
       // delete link page
       const newState = [...state.linkPages];
-      state.linkPages = newState.filter(page => page.pageid !== action.payload);
-    }
-  }
+      state.linkPages = newState.filter(
+        (page) => page.pageid !== action.payload,
+      );
+    },
+  },
 });
 
 export default userSlice.reducer;

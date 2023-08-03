@@ -1,19 +1,19 @@
-import { toast } from "react-toastify";
-import { LinkPage } from "./types/User";
+import { toast } from 'react-toastify';
+import { LinkPage } from './types/User';
 
 export type AddNewPageRequest = {
-  username: string,
+  username: string;
   linkpage: LinkPage;
 };
 
 export type DeletePageRequest = {
-  username: string,
+  username: string;
   pageid: string;
 };
 
 export type EditLinkPageRequest = {
-  username: string,
-  linkpage: LinkPage,
+  username: string;
+  linkpage: LinkPage;
   linkpageid: string;
 };
 
@@ -23,7 +23,7 @@ export const http = {
       const response = await fetch('/api/linkpage', {
         headers: { 'Content-Type': 'application/json' },
         method: 'POST',
-        body: JSON.stringify({ username, linkpage })
+        body: JSON.stringify({ username, linkpage }),
       });
 
       const data = await response.json();
@@ -38,7 +38,7 @@ export const http = {
       const response = await fetch('/api/linkpage', {
         headers: { 'Content-type': 'application/json' },
         method: 'DELETE',
-        body: JSON.stringify({ username, pageid })
+        body: JSON.stringify({ username, pageid }),
       });
       const data = await response.json();
       return { status: response.status, message: data.payload };
@@ -53,8 +53,10 @@ export const http = {
         headers: { 'Content-Type': 'application/json' },
         method: 'PUT',
         body: JSON.stringify({
-          username, linkpage, linkpageid
-        })
+          username,
+          linkpage,
+          linkpageid,
+        }),
       });
       const data = await response.json();
       return { status: response.status, message: data.payload };
@@ -68,13 +70,13 @@ export const http = {
       const response = await fetch('/api/login', {
         headers: { 'Content-Type': 'application/json' },
         method: 'POST',
-        body: JSON.stringify({ username })
+        body: JSON.stringify({ username }),
       });
       const data = await response.json();
       return { status: response.status, message: data.message };
     } catch (error) {
       console.error(error);
-      toast.error("Something went wrong");
+      toast.error('Something went wrong');
     }
   },
   register: async (username: string, email: string) => {
@@ -82,13 +84,13 @@ export const http = {
       const response = await fetch('/api/register', {
         headers: { 'Content-Type': 'application/json' },
         method: 'POST',
-        body: JSON.stringify({ username, email })
+        body: JSON.stringify({ username, email }),
       });
       const data = await response.json();
       return { status: response.status, message: data.message };
     } catch (error) {
       console.error(error);
-      toast.error("Something went wrong");
+      toast.error('Something went wrong');
     }
-  }
+  },
 };
