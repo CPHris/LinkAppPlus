@@ -1,12 +1,14 @@
-LinkApp is a project to have all your social links in one place. It is developed with [Next.js](https://nextjs.org/) so it doesn't need a dedicated server.
+LinkAppPlus is a project to have all your social links in one place. It is developed with [Next.js](https://nextjs.org/) so it doesn't need a dedicated server.
 
 ![Link Page](image.png)
 ![Alt text](image-1.png)
 
 ## Watch the demo
+
 [Link to the demo](https://youtu.be/IRLtIqtumOg)
 
 ## Getting Started
+
 Fork this repo and clone it in to your local environment.
 
 Navigate to the project folder.
@@ -30,8 +32,11 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 Controllers, models and the database connection are inside `pages/api/server/` folder.
 
 ## Things to improve
+
 Because this project has been developed in only one week it has some flaws to fix:
+
 ### Urgent
+
 - At this moment, any user can create a link page with a `pageid` that already exists. The database allows it and it shouldn't.
 - Error handling in the server side should be more clear.
 - At this moment users can be created without storing a password. The `UserSchema` should bemodified to be able to store a hashed password.
@@ -40,6 +45,7 @@ Because this project has been developed in only one week it has some flaws to fi
 - In `getServerSideProps` functions, when fetching data, the request is made to a hardcoded URL `https://localhost:3000`. Find a way to make it dynamic so when the app is deployed it works.
 
 ### Not so urgent
+
 - Along all the app there are oportunities to modularize components. For example, an `InputText` component could be created because it repeats in many places.
 - A refactor for `apiService.ts` would be beneficial. Abstract the shared logic for the api call to make it clearer and shorter.
 - There is no custom error page
@@ -49,11 +55,13 @@ Because this project has been developed in only one week it has some flaws to fi
 - Create a `.env` file that contains the database data, routes, etc.
 
 ### Tiny details
+
 - User profile `dropDownMenu` in the `edit` page falls behind the preview box when is open.
 - There are several buttons in the page that doesn't have hover feedback.
 - The LinkApp logo in the navbar is not a link to the landing page.
 
 ### New features
+
 - User authentication and a proper login
 - Sessions. Persist data when reloading the page. Right now if the `edit` page is reloaded throws an error.
 - Include some animations when adding, removing, changing thins on the app.
