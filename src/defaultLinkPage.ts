@@ -1,4 +1,4 @@
-import { LinkPage } from "./types/User";
+import { LinkPage } from './types/User';
 
 export const createDefaultLinkPage = (pageid: string): LinkPage => {
   return {
@@ -7,7 +7,7 @@ export const createDefaultLinkPage = (pageid: string): LinkPage => {
     description: 'This is a new page',
     links: [],
     backgroundImg: '#22D3EE',
-    textColor: "#fff",
-    avatarImg: ''
+    textColor: '#fff',
+    avatarImg: '',
   };
 };
