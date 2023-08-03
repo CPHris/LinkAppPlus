@@ -54,6 +54,7 @@ Provide a short description of the reliability improvements that you plan to exe
 \*\*To Do Live List:
 
 - when you reload profile edit page the app will crash
+- the top right dropdown menu z-index is too low on the edit profile page
   \*\*
 
 ## New features
