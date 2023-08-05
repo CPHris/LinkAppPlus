@@ -16,11 +16,12 @@ describe('Login, create page, delete page, logout', () => {
     cy.get('#add-name-input').type('-test-page');
     cy.get('button[type="submit"]').click();
     // test new page
+    cy.get('.edit-btn-class').last().click();
     cy.get('#goto-btn').click();
     cy.contains('test-page');
     cy.visit('http://localhost:3000/user/testuser');
     // test edit page
-    cy.get('#edit-btn').click();
+    cy.get('#edit-btn').last().click();
     cy.contains('Change your Link Page URL');
     cy.get('a[href*="user"]').click(); //cancel btn
     // delete page
