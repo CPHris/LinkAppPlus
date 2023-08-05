@@ -25,7 +25,7 @@ export default function LinkPagesListItem (props: ILinkPagesListItemProps) {
         <span className='block text-sm text-center'>1790</span>
       </div>
       <div className='w-full text-right'>
-        <Link id="edit-btn" href={`${props.userRoute}/edit/${pageid}`} className='px-1 border-solid border border-cyan-500 rounded mb-7 mr-3'><i className="fa-solid fa-edit fa-xs text-cyan-500" ></i></Link>
+        <Link id="edit-btn" href={`${props.userRoute}/edit/${pageid}`} className='px-1 border-solid border border-cyan-500 rounded mb-7 mr-3 edit-btn-class'><i className="fa-solid fa-edit fa-xs text-cyan-500" ></i></Link>
         {/* <Link href={`${props.userRoute}/analytics/${pageid}`} className='px-1 border-solid border border-cyan-500 rounded mb-7'><i className="fa-sharp fa-regular fa-chart-line"></i></Link> */}
         <button id="page-del-btn" type='button' className='px-1 bg-red-400 rounded' onClick={deleteLinkPage}><i className="fa-solid fa-trash fa-xs text-white"></i></button>
       </div>
