@@ -6,10 +6,12 @@ export interface ILinkListProps {
   links: SocialMediaLink[];
 }
 
-export default function LinkList (props: ILinkListProps) {
+export default function LinkList(props: ILinkListProps) {
   return (
     <div>
-      {props.links.map(link => <LinkListItem link={link} key={link.title} />)}
+      {props.links.map((link) => (
+        <LinkListItem link={link} key={link.title} />
+      ))}
     </div>
   );
 }

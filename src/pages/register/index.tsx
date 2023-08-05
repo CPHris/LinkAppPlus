@@ -1,3 +1,4 @@
+
 import { http } from '@/apiService';
 import Footer from '@/components/Layout/Footer';
 import Link from 'next/link';
@@ -100,3 +101,4 @@ export default function RegisterPage(props: IRegisterPageProps) {
     </>
   );
 }
+

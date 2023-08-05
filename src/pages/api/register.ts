@@ -5,14 +5,14 @@ type Data = {
   message: string;
 };
 
-export default async function handler (
+export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse<Data>,
 ) {
   if (req.method === 'POST') {
     const user = req.body;
     if (!user.email || !user.username) {
-      return res.status(400).send({ message: "Missing email/username" });
+      return res.status(400).send({ message: 'Missing email/username' });
     }
     try {
       user.linkPages = [];

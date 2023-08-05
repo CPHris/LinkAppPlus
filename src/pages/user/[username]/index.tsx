@@ -1,3 +1,4 @@
+
 import LinkPagesList from '@/components/UserPage/LinkPagesList';
 import { User } from '@/types/User';
 import { GetServerSideProps, NextPage } from 'next';

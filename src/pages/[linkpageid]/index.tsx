@@ -1,3 +1,4 @@
+
 import Avatar from '@/components/MainLinkPage/Avatar';
 import Banner from '@/components/MainLinkPage/Banner';
 import DescriptionBox from '@/components/MainLinkPage/DescriptionBox';
