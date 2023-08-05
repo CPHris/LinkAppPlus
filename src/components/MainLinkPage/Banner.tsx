@@ -13,6 +13,7 @@ export default function Banner (props: IBannerProps) {
           Get your own link page
         </Link>
         <button className='absolute top-0'
+          id="list-back-btn'"
           type='button'
           onClick={props.dismissBanner}>
           <i className="fa-regular fa-circle-xmark text-gray-400"></i>

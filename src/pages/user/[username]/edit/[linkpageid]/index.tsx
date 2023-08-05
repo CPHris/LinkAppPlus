@@ -108,6 +108,7 @@ export default function EditLinkPage () {
             <h2 className='block text-center mb-2 font-semibold'>Name</h2>
             <div className='mx-auto my-0 flex justify-center items-center mb-5'>
               <input className='px-3 bg-gray-200 text-center rounded-md mr-2'
+                id="add-name-input"
                 type='text'
                 value={name}
                 onChange={onNameChangeHandler} />
@@ -163,7 +164,7 @@ export default function EditLinkPage () {
             {/* <div className='bg-black bg-opacity-40 py-10 px-5 relative' > */}
             <div className='py-10 px-5 relative' >
               <span className='text-white font-bold text-sm absolute top-2 left-3'>PREVIEW</span>
-              <Link className='text-white font-bold text-sm absolute top-2 right-3' href={`/${linkpageid}`}>Go to page <i className="fa-solid fa-link"></i></Link>
+              <Link id="goto-btn" className='text-white font-bold text-sm absolute top-2 right-3' href={`/${linkpageid}`}>Go to page <i className="fa-solid fa-link"></i></Link>
               <div className='max-w-md mx-auto'>
                 <div className='mb-10'>
                   <Avatar name={name} img={avatarImg} />

@@ -7,23 +7,40 @@ import { GetServerSideProps, NextPage } from 'next';
 import * as React from 'react';
 import { useState } from 'react';
 
-export interface IMainLinkPageProps {
-}
+export interface IMainLinkPageProps {}
 
-const MainLinkPage: NextPage<{ linkpage: LinkPage; }> = ({ linkpage }) => {
+const MainLinkPage: NextPage<{ linkpage: LinkPage }> = ({ linkpage }) => {
   const [isBannerVisible, setIsBannerVisible] = useState(true);
+  console.log('page data',linkpage);
   return (
     <>
-      <main className='h-screen' style={{ 'backgroundColor': linkpage.backgroundImg }}>
-        <div className='max-w-md mx-auto pt-20 p-5'>
-          <div className='mb-10'>
+      <main
+        className="h-screen"
+        style={{ backgroundColor: linkpage.backgroundImg }}
+      >
+        <div className="max-w-md mx-auto pt-20 p-5">
+          <div className="mb-10">
             <Avatar name={linkpage.name} img={linkpage.avatarImg} />
-            <h1 className='font-bold text-xl text-center' style={{ 'color': linkpage.textColor }}>{linkpage.name}</h1>
-            <DescriptionBox description={linkpage.description} textColor={linkpage.textColor} />
+            <h1
+              className="font-bold text-xl text-center"
+              style={{ color: linkpage.textColor }}
+            >
+              {linkpage.name}
+            </h1>
+            <DescriptionBox
+              description={linkpage.description}
+              textColor={linkpage.textColor}
+            />
           </div>
           {linkpage.links && <LinkList links={linkpage.links} />}
         </div>
-        {isBannerVisible && <Banner dismissBanner={() => { setIsBannerVisible(false); }} />}
+        {isBannerVisible && (
+          <Banner
+            dismissBanner={() => {
+              setIsBannerVisible(false);
+            }}
+          />
+        )}
       </main>
     </>
   );
@@ -42,7 +59,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return {
     props: {
-      linkpage
-    }
+      linkpage,
+    },
   };
 };

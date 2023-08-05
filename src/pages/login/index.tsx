@@ -41,8 +41,8 @@ export default function RegisterPage (props: IRegisterPageProps) {
                 value={username}
                 required
                 onChange={(e) => { setUsername(e.target.value); }}></input>
-              <label className='block font-semibold text-sm'>Pasword</label>
-              <input type='password' className='block border-2 mb-2 rounded mb-8'
+              <label className='block font-semibold text-sm'>Password</label>
+              <input type='password' placeholder="password" className='block border-2 mb-2 rounded mb-8'
                 value={password}
                 onChange={(e) => { setPassword(e.target.value); }}></input>
               <button className='block bg-cyan-500 rounded-lg px-3 py-2 text-white font-semibold text-sm hover:bg-cyan-400'>Login</button>
