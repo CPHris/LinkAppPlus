@@ -1,8 +1,13 @@
 import mongoose from 'mongoose';
 import { LinkPage, User } from '@/types/User';
 import UserSchema from './models/UserSchema';
+const path = require('path');
 
-const uri = 'mongodb://127.0.0.1:27017/LinkApp';
+require('dotenv').config({
+  path: path.resolve(__dirname, `../../../../.env.${process.env.NODE_ENV}`),
+});
+
+const uri = String(process.env.DB_URL);
 const client = mongoose.connect(uri);
 
 export const db = {
