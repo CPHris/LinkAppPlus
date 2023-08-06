@@ -1,3 +1,4 @@
+
 import { http } from '@/apiService';
 import Footer from '@/components/Layout/Footer';
 import Link from 'next/link';
@@ -40,6 +41,7 @@ export default function RegisterPage(props: IRegisterPageProps) {
               <label className="block font-semibold text-sm">Username</label>
               <input
                 type="text"
+                placeholder="username"
                 className="block border-2 mb-2 rounded"
                 value={username}
                 required
@@ -50,6 +52,7 @@ export default function RegisterPage(props: IRegisterPageProps) {
               <label className="block font-semibold text-sm">Email</label>
               <input
                 type="email"
+                placeholder="email"
                 className="block border-2 mb-2 rounded"
                 value={email}
                 required
@@ -57,9 +60,11 @@ export default function RegisterPage(props: IRegisterPageProps) {
                   setEmail(e.target.value);
                 }}
               ></input>
-              <label className="block font-semibold text-sm">Pasword</label>
+              <label className="block font-semibold text-sm">Password</label>
               <input
+                id="reg-pass-1"
                 type="password"
+                placeholder="password"
                 className="block border-2 mb-2 rounded"
                 value={password}
                 onChange={(e) => {
@@ -70,14 +75,16 @@ export default function RegisterPage(props: IRegisterPageProps) {
                 Confirm password
               </label>
               <input
+                id="reg-pass-2"
                 type="password"
+                placeholder="confirm password"
                 className="block border-2 mb-2 rounded mb-8"
                 value={confirmedPassword}
                 onChange={(e) => {
                   setConfirmedPassword(e.target.value);
                 }}
               ></input>
-              <button className="block bg-cyan-500 rounded-lg px-3 py-2 text-white font-semibold text-sm hover:bg-cyan-400">
+              <button id="reg-btn" className="block bg-cyan-500 rounded-lg px-3 py-2 text-white font-semibold text-sm hover:bg-cyan-400">
                 Create Account
               </button>
             </form>
@@ -94,3 +101,4 @@ export default function RegisterPage(props: IRegisterPageProps) {
     </>
   );
 }
+
