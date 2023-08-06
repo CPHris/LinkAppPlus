@@ -1,3 +1,4 @@
+
 import Avatar from '@/components/MainLinkPage/Avatar';
 import Banner from '@/components/MainLinkPage/Banner';
 import DescriptionBox from '@/components/MainLinkPage/DescriptionBox';
@@ -11,6 +12,7 @@ export interface IMainLinkPageProps {}
 
 const MainLinkPage: NextPage<{ linkpage: LinkPage }> = ({ linkpage }) => {
   const [isBannerVisible, setIsBannerVisible] = useState(true);
+  console.log('page data',linkpage);
   return (
     <>
       <main

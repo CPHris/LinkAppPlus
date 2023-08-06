@@ -103,6 +103,7 @@ export default function EditLinkPage() {
         '',
         `/user/${user.username}/edit/${pageid}`,
       );
+      router.push({ pathname: '/user/' + user.username });
       return toast.success(response.message);
     }
     toast.error('Something went wrong');
@@ -126,6 +127,7 @@ export default function EditLinkPage() {
             <div className="mx-auto my-0 flex justify-center items-center mb-5">
               <input
                 className="px-3 bg-gray-200 text-center rounded-md mr-2"
+                id="add-name-input"
                 type="text"
                 value={name}
                 onChange={onNameChangeHandler}
@@ -189,6 +191,7 @@ export default function EditLinkPage() {
               Cancel
             </Link>
             <button
+              href=""
               className="text-white bg-green-400 rounded-md p-3 font-semibold"
               type="submit"
             >
@@ -199,7 +202,7 @@ export default function EditLinkPage() {
         {/* PREVIEW */}
         <div className="w-full basis-1/3 px-5 py-10">
           <div
-            className="rounded-2xl sticky top-5 overflow-y-scroll right-30 max-w-xs"
+            className="rounded-2xl z-10 sticky top-5 overflow:-moz-scrollbars-none right-30 max-w-xs"
             style={{ maxHeight: '34rem', backgroundColor: backgroundColor }}
           >
             {/* <div className='bg-black bg-opacity-40 py-10 px-5 relative' > */}
@@ -208,6 +211,7 @@ export default function EditLinkPage() {
                 PREVIEW
               </span>
               <Link
+                id="goto-btn"
                 className="text-white font-bold text-sm absolute top-2 right-3"
                 href={`/${linkpageid}`}
               >
