@@ -62,7 +62,11 @@ export default function EditLinkPage() {
   };
 
   const onNameChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setName(e.target.value);
+    if (e.target.value) {
+      setName(e.target.value);
+    } else {
+      setName('');
+    }
   };
 
   const onDescriptionChangeHandler = (
@@ -129,6 +133,7 @@ export default function EditLinkPage() {
                 className="px-3 bg-gray-200 text-center rounded-md mr-2"
                 id="add-name-input"
                 type="text"
+                placeholder="name"
                 value={name}
                 onChange={onNameChangeHandler}
               />
