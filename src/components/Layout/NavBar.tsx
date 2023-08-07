@@ -31,7 +31,7 @@ interface IDropDownMenuProps {
 function DropDownMenu (props: IDropDownMenuProps) {
   const { username, email, onclick } = props;
   return (
-    <div className="p-4 border border-gray-400 rounded-lg absolute top-14 right-0 bg-white">
+    <div className="p-4 z-20 border border-gray-400 rounded-lg absolute top-14 right-0 bg-white">
       <button type="button" onClick={onclick}>
         <i className="fa-regular fa-circle-xmark text-gray-400"></i>
       </button>
