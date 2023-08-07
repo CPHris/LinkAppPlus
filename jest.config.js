@@ -14,10 +14,3 @@ const customJestConfig = {
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
 module.exports = createJestConfig(customJestConfig);
-
-/** @type {import('ts-jest').JestConfigWithTsJest} */
-
-module.exports = {
-  preset: 'ts-jest',
-  testEnvironment: 'node',
-};
