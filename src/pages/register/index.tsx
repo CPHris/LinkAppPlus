@@ -41,7 +41,7 @@ export default function RegisterPage(props: IRegisterPageProps) {
               <input
                 type="text"
                 placeholder="username"
-                className="block border-2 mb-2 rounded"
+                className="block border-2 mb-2 rounded px-1 w-full"
                 value={username}
                 required
                 onChange={(e) => {
@@ -52,7 +52,7 @@ export default function RegisterPage(props: IRegisterPageProps) {
               <input
                 type="email"
                 placeholder="email"
-                className="block border-2 mb-2 rounded"
+                className="block border-2 mb-2 rounded px-1 w-full"
                 value={email}
                 required
                 onChange={(e) => {
@@ -64,7 +64,7 @@ export default function RegisterPage(props: IRegisterPageProps) {
                 id="reg-pass-1"
                 type="password"
                 placeholder="password"
-                className="block border-2 mb-2 rounded"
+                className="block border-2 mb-2 rounded px-1 w-full"
                 value={password}
                 onChange={(e) => {
                   setPassword(e.target.value);
@@ -77,7 +77,7 @@ export default function RegisterPage(props: IRegisterPageProps) {
                 id="reg-pass-2"
                 type="password"
                 placeholder="confirm password"
-                className="block border-2 mb-2 rounded mb-8"
+                className="block border-2 mb-2 rounded mb-8 px-1 w-full"
                 value={confirmedPassword}
                 onChange={(e) => {
                   setConfirmedPassword(e.target.value);

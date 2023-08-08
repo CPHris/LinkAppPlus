@@ -15,7 +15,7 @@ export default function NavBar(props: INavBarProps) {
     setIsDropDownMenuVisible((prevState) => !prevState);
   };
   return (
-    <div className="flex justify-between items-center px-4 py-2 border-b border-gray-400 relative bg-gray-100 shadow-sm">
+    <div className="flex justify-between items-center px-4 py-2 border-b border-gray-400 relative bg-gray-100 shadow-sm  min-h-[60px]">
       <div className="font-bold text-lg">
         <h1>
           LinkApp<span className="text-cyan-500">Plus</span>
