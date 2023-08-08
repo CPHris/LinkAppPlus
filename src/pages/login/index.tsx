@@ -25,7 +25,7 @@ export default function RegisterPage(props: IRegisterPageProps) {
   return (
     <>
       <div className="flex flex-col h-screen bg-gray-100">
-        <div className="mb-5 border-brelative shadow-sm">
+        <div className="mb-5 border-relative shadow-sm">
           <div className="flex justify-between items-center px-4 py-2 border-b border-gray-400 relative bg-gray-100 shadow-sm min-h-[60px]">
             <div className="font-bold text-lg">
               <h1>
