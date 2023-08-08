@@ -30,8 +30,7 @@ export default function RegisterPage(props: IRegisterPageProps) {
       <div className="flex flex-col h-screen bg-gray-100">
         <div className="mb-5 border-b border-gray-400 relative">
           <div className="flex justify-between items-center px-4 py-2 max-w-4xl mx-auto">
-            <div className="font-bold text-lg">LinkApp</div>
-            {/* <Link href='/register' className='block w-fit bg-cyan-500 rounded-lg py-1 px-3 text-white font-semibold hover:bg-cyan-600'>Sign in  <i className="fa-solid fa-right-to-bracket"></i></Link> */}
+            <div className="font-bold text-lg">LinkAppPlus</div>
           </div>
         </div>
         <main className="mb-auto mx-auto my-auto w-full max-w-2xl">

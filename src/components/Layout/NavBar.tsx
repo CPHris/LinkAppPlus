@@ -1,34 +1,49 @@
-
 import { User } from '@/types/User';
 import Link from 'next/link';
 import * as React from 'react';
 import { useState } from 'react';
 
 export interface INavBarProps {
-  username: string,
+  username: string;
   email: string;
 }
 
-export default function NavBar (props: INavBarProps) {
+export default function NavBar(props: INavBarProps) {
   const [isDropDownMenuVisible, setIsDropDownMenuVisible] = useState(false);
   const { username, email } = props;
   const toggleDropDownMenu = () => {
-    setIsDropDownMenuVisible(prevState => !prevState);
+    setIsDropDownMenuVisible((prevState) => !prevState);
   };
   return (
-    <div className='flex justify-between items-center px-4 py-2 border-b border-gray-400 relative bg-gray-100 shadow-sm'>
-      <div className='font-bold text-lg'>LinkApp</div>
-      <button id="menu-btn" className='block w-fit px-4 py-2 w-fit rounded-full bg-cyan-500 text-white font-bold text-md ' onClick={toggleDropDownMenu}>{username[0].toUpperCase()}</button>
-      {isDropDownMenuVisible && <DropDownMenu username={username} email={email} onclick={toggleDropDownMenu} />}
+    <div className="flex justify-between items-center px-4 py-2 border-b border-gray-400 relative bg-gray-100 shadow-sm">
+      <div className="font-bold text-lg">
+        <h1>
+          LinkApp<span className="text-cyan-500">Plus</span>
+        </h1>
+      </div>
+      <button
+        id="menu-btn"
+        className="block w-fit px-4 py-2 w-fit rounded-full bg-cyan-500 text-white font-bold text-md "
+        onClick={toggleDropDownMenu}
+      >
+        {username[0].toUpperCase()}
+      </button>
+      {isDropDownMenuVisible && (
+        <DropDownMenu
+          username={username}
+          email={email}
+          onclick={toggleDropDownMenu}
+        />
+      )}
     </div>
   );
 }
 interface IDropDownMenuProps {
-  username: string,
+  username: string;
   email: string;
   onclick: () => void;
 }
-function DropDownMenu (props: IDropDownMenuProps) {
+function DropDownMenu(props: IDropDownMenuProps) {
   const { username, email, onclick } = props;
   return (
     <div className="p-4 z-20 border border-gray-400 rounded-lg absolute top-14 right-0 bg-white">
@@ -55,4 +70,3 @@ function DropDownMenu (props: IDropDownMenuProps) {
     </div>
   );
 }
-
