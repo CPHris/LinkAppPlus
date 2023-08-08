@@ -28,8 +28,13 @@ const userSlice = createSlice({
         (page) => page.pageid !== action.payload,
       );
     },
+    selectUsername: (state) => {
+      state.username;
+    },
   },
 });
+
+
 
 export default userSlice.reducer;
 export const userActions = userSlice.actions;
