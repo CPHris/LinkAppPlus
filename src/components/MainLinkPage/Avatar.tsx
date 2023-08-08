@@ -20,7 +20,7 @@ export default function Avatar(props: IAvatarProps) {
         />
       ) : (
         <div className="px-10 py-8 w-fit rounded-full bg-cyan-500 text-white font-bold text-3xl mx-auto mb-5">
-          {name[0] ? name[0].toUpperCase() : 0}
+          {name && name[0] ? name[0].toUpperCase() : 0}
         </div>
       )}
     </>

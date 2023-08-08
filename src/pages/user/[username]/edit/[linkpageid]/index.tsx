@@ -4,13 +4,10 @@ import Layout from '@/components/Layout';
 import Avatar from '@/components/MainLinkPage/Avatar';
 import DescriptionBox from '@/components/MainLinkPage/DescriptionBox';
 import LinkList from '@/components/MainLinkPage/LinkList';
-import { RootState } from '@/store';
 import { LinkPage, SocialMediaLink } from '@/types/User';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import * as React from 'react';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import ColorPicker from '@/components/common/ColorPicker';
 import { defaultLink } from '@/defaultLink';
@@ -18,14 +15,13 @@ import { http } from '@/apiService';
 
 export interface IEditLinkPageProps {}
 
-export default function EditLinkPage() {
-  const user = useSelector((state: RootState) => state.user);
+function EditLinkPage({ user }) {
   const router = useRouter();
   const { linkpageid } = router.query;
   const linkPage = getLinkPage(linkpageid as string, user.linkPages);
 
   const [avatarImg, setAvatarImg] = useState<string | undefined>(
-    linkPage.avatarImg,
+    linkPage && linkPage.avatarImg ? linkPage.avatarImg : undefined,
   );
   const [name, setName] = useState(linkPage.name);
   const [description, setDescription] = useState(linkPage.description);
@@ -191,7 +187,6 @@ export default function EditLinkPage() {
               Cancel
             </Link>
             <button
-              href=""
               className="text-white bg-green-400 rounded-md p-3 font-semibold"
               type="submit"
             >
@@ -205,7 +200,6 @@ export default function EditLinkPage() {
             className="rounded-2xl z-10 sticky top-5 overflow:-moz-scrollbars-none right-30 max-w-xs"
             style={{ maxHeight: '34rem', backgroundColor: backgroundColor }}
           >
-            {/* <div className='bg-black bg-opacity-40 py-10 px-5 relative' > */}
             <div className="py-10 px-5 relative">
               <span className="text-white font-bold text-sm absolute top-2 left-3">
                 PREVIEW
@@ -241,7 +235,19 @@ export default function EditLinkPage() {
   );
 }
 
-function getLinkPage(pageid: string, state: LinkPage[]) {
-  const linkPage = state.filter((linkpage) => linkpage.pageid === pageid);
+function getLinkPage(pageid: string, LinkPages: LinkPage[]) {
+  const linkPage = LinkPages.filter((linkpage) => linkpage.pageid === pageid);
   return linkPage[0];
 }
+
+export async function getServerSideProps({ query }) {
+  const { username } = query;
+  const res = await fetch(
+    `http://localhost:3000/api/user?username=${username}`,
+  );
+  const payload = await res.json();
+  const user = payload.user;
+  return { props: { user } };
+}
+
+export default EditLinkPage;
