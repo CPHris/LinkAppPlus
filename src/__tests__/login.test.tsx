@@ -19,7 +19,7 @@ describe('Login', () => {
     render(<RegisterPage />);
 
     const heading = screen.getByRole('heading', {
-      name: /Create an account/i,
+      name: /Login/i,
     });
 
     expect(heading).toBeInTheDocument();

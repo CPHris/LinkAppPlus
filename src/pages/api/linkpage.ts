@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { LinkPageController } from './server/controllers/LinkPageController';
 import { LinkPage } from '@/types/User';
+import { log } from 'console';
 
 type Data = {
   payload: string | LinkPage[] | LinkPage;
@@ -21,7 +22,6 @@ export default async function handler(
       );
       return res.status(200).send({ payload: linkPages });
     } catch (err) {
-      console.error(err);
       return res.status(400).send({ payload: (err as Error).message });
     }
   }
@@ -35,7 +35,6 @@ export default async function handler(
       await LinkPageController.addLinkPage(username, linkpage);
       return res.status(201).send({ payload: 'Page added successfully' });
     } catch (err) {
-      console.error(err);
       return res.status(400).send({ payload: (err as Error).message });
     }
   }
@@ -56,7 +55,6 @@ export default async function handler(
       await LinkPageController.replaceLinkPage(username, linkpage, linkpageid);
       return res.status(201).send({ payload: 'Page edited successfully' });
     } catch (err) {
-      console.error(err);
       return res.status(400).send({ payload: (err as Error).message });
     }
   }
@@ -70,7 +68,6 @@ export default async function handler(
       await LinkPageController.deleteLinkPage(username, pageid);
       return res.status(201).send({ payload: 'Page removed successfully' });
     } catch (err) {
-      console.error(err);
       return res.status(400).send({ payload: (err as Error).message });
     }
   }
