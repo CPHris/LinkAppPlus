@@ -23,4 +23,14 @@ describe('Login API', () => {
     expect(res.statusCode).toBe(200);
     expect(res.statusMessage).toEqual('OK');
   });
+
+  it('should not login a wrong user', async () => {
+    const { req, res } = mockRequestResponse(
+      'POST',
+      { username: 'tester_not_in_the_database' },
+      '',
+    );
+    await loginHandler(req, res);
+    expect(res.statusCode).toBe(404);
+  });
 });
