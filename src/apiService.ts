@@ -93,4 +93,18 @@ export const http = {
       toast.error('Something went wrong');
     }
   },
+  update: async (username: string, email: string) => {
+    try {
+      const response = await fetch('/api/update', {
+        headers: { 'Content-Type': 'application/json' },
+        method: 'PUT', // potentially updated HTTP method
+        body: JSON.stringify({ username, email }),
+      });
+      const data = await response.json();
+      return { status: response.status, message: data.message };
+    } catch (error) {
+      console.error(error);
+      toast.error('Something went wrong');
+    }
+  },
 };

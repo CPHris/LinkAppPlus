@@ -21,6 +21,11 @@ const userSlice = createSlice({
       newState.push(action.payload);
       state.linkPages = [...newState];
     },
+    updateUserProfile: (state, action) => {
+      state.username = action.payload.username;
+      console.log(state.username);
+      state.email = action.payload.email;
+    },
     deleteLinkPage: (state, action) => {
       // delete link page
       const newState = [...state.linkPages];
@@ -33,8 +38,6 @@ const userSlice = createSlice({
     },
   },
 });
-
-
 
 export default userSlice.reducer;
 export const userActions = userSlice.actions;

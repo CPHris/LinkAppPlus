@@ -70,4 +70,14 @@ export const db = {
     );
     return updatedDocument;
   },
+  updateUserProfile: async (
+    username: string,
+    updatedProfile: Partial<User>,
+  ) => {
+    return UserSchema.findOneAndUpdate(
+      { username },
+      { $set: updatedProfile },
+      { new: true },
+    );
+  },
 };
