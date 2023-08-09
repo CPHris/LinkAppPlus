@@ -1,0 +1,22 @@
+{
+  "username": "testerino",
+  "email": "testerino@oniretset.se",
+  "linkPages": [
+    {
+      "pageid": "12345",
+      "name": "Mr Link",
+      "avatarImg": "https://www.cartoonify.de/wp-content/plugins/svg-avatars-generator/data/temp-avatars/svgA8049004965628472.png",
+      "description": "This is a page",
+      "backgroundImg": "#eeda22",
+      "textColor": "#fff",
+      "links": [
+        {
+          "img": "https://www.freepnglogos.com/uploads/purple-twitch-logo-png-18.png",
+          "title": "The title",
+          "subtitle": "The subtitle",
+          "url": "https://"
+        }
+      ]
+    }
+  ]
+}
