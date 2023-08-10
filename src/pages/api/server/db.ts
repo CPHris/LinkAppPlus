@@ -70,13 +70,10 @@ export const db = {
     );
     return updatedDocument;
   },
-  updateUserProfile: async (
-    username: string,
-    updatedProfile: Partial<User>,
-  ) => {
+  updateUserProfile: async (username: string, email: string) => {
     return UserSchema.findOneAndUpdate(
       { username },
-      { $set: updatedProfile },
+      { $set: { email } },
       { new: true },
     );
   },

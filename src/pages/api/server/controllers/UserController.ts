@@ -13,6 +13,6 @@ export const UserController = {
     return await db.deleteUser(username);
   },
   updateUser: async (user: User) => {
-    await db.updateUser(user);
+    await db.updateUserProfile(user.username, user.email);
   },
 };
