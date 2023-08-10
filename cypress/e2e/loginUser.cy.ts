@@ -31,7 +31,7 @@ describe('Login, create page, delete page, logout', () => {
     cy.get('#menu-btn').click();
     cy.get('#logout-btn').click();
     cy.url().should('eq', 'http://localhost:3000/login');
-    cy.contains('Create an account');
+    cy.contains('Login');
   })
 })
 // TESTUSER DATA:
