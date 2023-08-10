@@ -1,5 +1,6 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import { renderWithProviders } from '../testUtils';
 
 import ProfilePage from '@/pages/user/[username]/profile/index';
 
@@ -14,9 +15,9 @@ jest.mock('next/router', () => ({
 
 describe('Profile', () => {
   it('renders a heading', () => {
-    render(<ProfilePage />);
+    renderWithProviders(<ProfilePage />);
     const heading = screen.getByRole('heading', {
-      name: /Profile Page/i,
+      name: /update email/i,
     });
     expect(heading).toBeInTheDocument();
   });

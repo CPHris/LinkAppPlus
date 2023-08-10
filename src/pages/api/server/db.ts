@@ -70,4 +70,11 @@ export const db = {
     );
     return updatedDocument;
   },
+  updateUserProfile: async (username: string, email: string) => {
+    return UserSchema.findOneAndUpdate(
+      { username },
+      { $set: { email } },
+      { new: true },
+    );
+  },
 };
