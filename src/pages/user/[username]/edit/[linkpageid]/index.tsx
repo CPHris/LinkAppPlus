@@ -4,7 +4,7 @@ import Layout from '@/components/Layout';
 import Avatar from '@/components/MainLinkPage/Avatar';
 import DescriptionBox from '@/components/MainLinkPage/DescriptionBox';
 import LinkList from '@/components/MainLinkPage/LinkList';
-import { LinkPage, SocialMediaLink } from '@/types/User';
+import { LinkPage, SocialMediaLink, User } from '@/types/User';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -13,9 +13,11 @@ import ColorPicker from '@/components/common/ColorPicker';
 import { defaultLink } from '@/defaultLink';
 import { http } from '@/apiService';
 
-export interface IEditLinkPageProps {}
+export interface IEditLinkPageProps {
+  user: User;
+}
 
-function EditLinkPage({ user }) {
+function EditLinkPage({ user }: IEditLinkPageProps) {
   const router = useRouter();
   const { linkpageid } = router.query;
   const linkPage = getLinkPage(linkpageid as string, user.linkPages);

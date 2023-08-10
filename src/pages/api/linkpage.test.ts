@@ -1,19 +1,20 @@
 /**
  * @jest-environment node
  */
-import { createMocks, RequestMethod } from 'node-mocks-http';
-import type { NextApiRequest, NextApiResponse } from 'next';
-import registerHandler from './register';
-import userHandler from './user';
+import {
+  mockRequestResponse,
+  addTestUser,
+  deleteTestUser,
+  getQuery,
+} from './utils';
 import linkpageHandler from './linkpage';
 
-describe('Register API', () => {
-  it('should add a user', async () => {
-    const { req, res } = mockRequestResponse('POST', postUserQuery, '');
-    await registerHandler(req, res);
-    expect(res.statusCode).toBe(201);
-    expect(res.statusMessage).toEqual('OK');
-  });
+beforeAll(() => {
+  return addTestUser();
+});
+
+afterAll(() => {
+  return deleteTestUser();
 });
 
 describe('Linkpage API POST', () => {
@@ -79,22 +80,11 @@ describe('Linkpage API DELETE', () => {
       '',
     );
     req.query = { username: '' };
-
     await linkpageHandler(req, res);
     expect(res.statusCode).toBe(400);
   });
 });
-describe('Delete user API', () => {
-  it('should delete a user', async () => {
-    const { req, res } = mockRequestResponse('DELETE', deleteQuery, '');
-    await userHandler(req, res);
-    expect(res.statusCode).toBe(201);
-    expect(res.statusMessage).toEqual('OK');
-  });
-});
 
-const reqHeader = { 'Content-Type': 'application/json' };
-const getQuery = { username: 'testerino' };
 const deleteQuery = { username: 'testerino', pageid: 12345 };
 const deleteQueryMissingName = { pageid: 12345 };
 const postQuery = {
@@ -120,19 +110,6 @@ const postQueryMissing_Name = {
     links: [],
   },
 };
-const postUserQuery = {
-  username: 'testerino',
-  email: 'testerino@diehard.me',
-  linkPages: [],
-};
-const putQuery = { ...postQuery, ...{ linkpageid: 12345 } };
-const putQueryMissingValue = { username: 'testerino' };
 
-function mockRequestResponse(method: RequestMethod = 'GET', body, query) {
-  const { req, res }: { req: NextApiRequest; res: NextApiResponse } =
-    createMocks({ method });
-  req.headers = reqHeader;
-  req.body = body;
-  req.query = query;
-  return { req, res };
-}
+const putQuery = { ...postQuery, ...{ linkpageid: 12345 } };
+const putQueryMissingValue = getQuery;

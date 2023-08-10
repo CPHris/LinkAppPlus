@@ -14,7 +14,7 @@ const customJestConfig = {
   collectCoverageFrom: ['./src/**'],
   coverageThreshold: {
     global: {
-      lines: 33.33,
+      lines: 50,
     },
   },
 };
