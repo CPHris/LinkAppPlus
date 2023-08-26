@@ -54,7 +54,8 @@ const UserPage: NextPage<{ user: User; }> = ({ user }) => {
             My Link Pages
           </h1>
           <LinkPagesList linkpages={stateUser.linkPages} userRoute={userRoute} deleteLinkPage={deleteLinkPage} />
-          <button id="user-page-add-btn" className="mx-auto block w-fit py-1 px-3 text-gray-700 font-semibold rounded-lg hover:bg-gray-200"
+          <button
+            id="user-page-add-btn" className="mx-auto block w-fit py-1 px-3 text-gray-700 font-semibold rounded-lg hover:bg-gray-200"
             type='button'
             onClick={addNewPage}
           >Add New Page</button>
