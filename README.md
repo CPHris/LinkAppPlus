@@ -15,6 +15,7 @@ Fork this repo and clone it in to your local environment.
 Navigate to the project folder.
 
 Run `npm install`.
+
 Have MongoDB running and set the `DB_URL` in the `.env.development` file.
 
 To run the development server:
