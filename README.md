@@ -30,3 +30,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 Controllers, models and the database connection are inside `pages/api/server/` folder.
 
+## Tech Stack
+
+Next.js, React, TypeScript, Redux Toolkit, Tailwind, MongoDB, Mongoose
