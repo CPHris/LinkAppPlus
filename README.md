@@ -15,15 +15,12 @@ Fork this repo and clone it in to your local environment.
 Navigate to the project folder.
 
 Run `npm install`.
+Have MongoDB running and set the `DB_URL` in the `.env.development` file.
 
 To run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the landing page.
