@@ -1,3 +1,6 @@
+
+![linkappplus-landing](https://github.com/CPHris/LinkAppPlus/assets/130067118/d13f77b6-6bd0-45e5-90d2-e809b55503f1)
+
 LinkAppPlus is a project to have all your social links in one place. It is developed with [Next.js](https://nextjs.org/) so it doesn't need a dedicated server.
 
 ![Link Page](image.png)
