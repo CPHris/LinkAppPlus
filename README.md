@@ -32,4 +32,7 @@ Controllers, models and the database connection are inside `pages/api/server/` f
 
 ## Tech Stack
 
-Next.js, React, TypeScript, Redux Toolkit, Tailwind, MongoDB, Mongoose
+- [Next.js](https://github.com/vercel/next.js) - [React](https://github.com/facebook/react) - [TypeScript](https://github.com/microsoft/TypeScript)
+- [Redux Toolkit](https://github.com/reduxjs/redux-toolkit)
+- [Tailwind](https://github.com/tailwindlabs/tailwindcss)
+- [MongoDB](https://github.com/mongodb/mongo) - [Mongoose](https://github.com/Automattic/mongoose)
