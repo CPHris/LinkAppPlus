@@ -36,3 +36,8 @@ Controllers, models and the database connection are inside `pages/api/server/` f
 - [Redux Toolkit](https://github.com/reduxjs/redux-toolkit)
 - [Tailwind](https://github.com/tailwindlabs/tailwindcss)
 - [MongoDB](https://github.com/mongodb/mongo) - [Mongoose](https://github.com/Automattic/mongoose)
+
+## Developers
+
+- Chris Sorensen - [Github](https://github.com/CPHris) - [LinkedIn](https://www.linkedin.com/in/chris-sorensen-cph/)
+- Arto Lahtinen - [Github](https://github.com/aatoaa) - [LinkedIn](https://www.linkedin.com/in/arto-l/)
