@@ -39,5 +39,5 @@ Controllers, models and the database connection are inside `pages/api/server/` f
 
 ## Developers
 
-- Chris Sorensen - [Github](https://github.com/CPHris) - [LinkedIn](https://www.linkedin.com/in/chris-sorensen-cph/)
-- Arto Lahtinen - [Github](https://github.com/aatoaa) - [LinkedIn](https://www.linkedin.com/in/arto-l/)
+- Chris Sorensen - [GitHub](https://github.com/CPHris) - [LinkedIn](https://www.linkedin.com/in/chris-sorensen-cph/)
+- Arto Lahtinen - [GitHub](https://github.com/aatoaa) - [LinkedIn](https://www.linkedin.com/in/arto-l/)
